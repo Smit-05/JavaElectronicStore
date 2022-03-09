@@ -11,5 +11,8 @@
         <property name="connection.password"></property>
         <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
+        <mapping class="com.electronics.entities.Category"/>
+        <mapping class="com.electronics.entities.User"/>
+        <mapping class="com.electronics.entities.Product"/>
     </session-factory>
 </hibernate-configuration>
