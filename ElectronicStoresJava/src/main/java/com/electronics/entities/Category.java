@@ -22,6 +22,15 @@ public class Category {
 	@OneToMany(mappedBy = "category")
 	private List<Product> products=new ArrayList<>();
 	
+	
+	public Category() {
+		super();
+	}
+	public Category(String cName, List<Product> products) {
+		super();
+		this.cName = cName;
+		this.products = products;
+	}
 	public int getcId() {
 		return cId;
 	}

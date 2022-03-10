@@ -29,12 +29,14 @@ public class User {
 	private String uPhoneNo;
 	@Column(length=1500)
 	private String uAddress;
+	private String role;
+	
 	
 	public User() {
 		super();
 	}
 	public User(String uName, String password, String emailId, String fName, String lname, String mName,
-			String uPhoneNo, String uAddress) {
+			String uPhoneNo, String uAddress,String role) {
 		super();
 		this.uName = uName;
 		this.password = password;
@@ -44,6 +46,7 @@ public class User {
 		this.mName = mName;
 		this.uPhoneNo = uPhoneNo;
 		this.uAddress = uAddress;
+		this.role = role;
 	}
 	public int getuId() {
 		return uId;
@@ -99,6 +102,11 @@ public class User {
 	public void setuAddress(String uAddress) {
 		this.uAddress = uAddress;
 	}
-	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	
 }
