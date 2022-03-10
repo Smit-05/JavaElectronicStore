@@ -6,9 +6,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<%@include file="components/cdn.jsp" %>
 <title>Insert title here</title>
 </head>
 <body>
+
+<%@include file="components/navbar.jsp" %>
 	<%
 		out.println(FactoryProvider.getFactory());
 	%>
