@@ -95,7 +95,6 @@ public class UserController {
 				role = u.getRole();
 			}
 		}
-			
 		if(flag == true) {
 //			HttpSession session = request.getSession();
 			mv.addObject("uname",name);

@@ -9,6 +9,6 @@
 <body>
 
 	<h2>Welcome ${uname}</h2>
-
+	<a href="category">Add Product</a>
 </body>
 </html>
