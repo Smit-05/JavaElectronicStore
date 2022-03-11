@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+//import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpServletRequest;
 import model.User;
 import service.UserService;
 
 import java.util.List;
 import org.jboss.logging.Logger;
-
 
 @Controller
 public class UserController {
@@ -73,6 +74,7 @@ public class UserController {
 			
 			if(flag==true) {
 				userService.addUser(user);
+				mv.addObject("success_message","User Successfully registered Now login...");
 				mv.setViewName("login");
 			}
 		}
@@ -95,9 +97,10 @@ public class UserController {
 		}
 			
 		if(flag == true) {
+//			HttpSession session = request.getSession();
 			mv.addObject("uname",name);
 			if(role.equals("Customer")) {
-				mv.setViewName("home");
+				mv.setViewName("customerHome");
 			}else if(role.equals("Admin")){
 				mv.setViewName("adminHome");
 			}

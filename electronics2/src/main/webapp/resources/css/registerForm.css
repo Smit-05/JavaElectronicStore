@@ -1,0 +1,17 @@
+@charset "ISO-8859-1";
+
+body{
+	margin:0px!important;
+	padding:0px!important;
+	/* background:url(../images/2593068.jpg)!important;
+	color:white!important; */
+}
+
+/* .container{
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.673)!important;
+    background-color: rgba(62, 52, 52, 0.694)!important;
+    backdrop-filter: blur(5px)!important;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7)!important;
+    backdrop-filter: blur(10px)!important;
+    border-radius:10px!important;
+} */
