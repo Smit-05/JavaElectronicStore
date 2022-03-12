@@ -32,6 +32,7 @@ public class Product {
 	public Product() {
 		super();
 	}
+	
 	public Product(String pName, String pDesc, int pPrice, int pDiscount, String pPic, int pQuantity,
 			Category category) {
 		super();
@@ -91,4 +92,5 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	
 }

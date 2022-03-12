@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-//import javax.servlet.http.HttpSession;
-//import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 import model.User;
 import service.UserService;
 
@@ -83,7 +83,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/validateUser", method = RequestMethod.POST)
-	public ModelAndView validateUser(@RequestParam("uName") String name,@RequestParam("password") String pass,ModelAndView mv) {
+	public ModelAndView validateUser(@RequestParam("uName") String name,@RequestParam("password") String pass,ModelAndView mv,HttpServletRequest req) {
 		
 		List<User> allUsers = userService.getAllUsers();
 		
@@ -96,7 +96,8 @@ public class UserController {
 			}
 		}
 		if(flag == true) {
-//			HttpSession session = request.getSession();
+			HttpSession session = req.getSession();
+			session.setAttribute("userName",name);
 			mv.addObject("uname",name);
 			if(role.equals("Customer")) {
 				mv.setViewName("customerHome");
@@ -108,6 +109,14 @@ public class UserController {
 			mv.setViewName("login");
 		}
 		
+		return mv;
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(ModelAndView mv,HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		session.invalidate();
+		mv.setViewName("login");
 		return mv;
 	}
 	

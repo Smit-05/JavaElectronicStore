@@ -1,5 +1,11 @@
+<% 
+
+	response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+	if(session.getAttribute("userName") != null){
+%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="False"%>
+<%@include file="../../resources/header/customerHeader.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +14,10 @@
 </head>
 <body>
 
-	<center><h1>Welcome ${uname}</h1></center>
+	<h2>Customer Home page</h2>
 
 </body>
 </html>
+<% 
+	}
+%>
