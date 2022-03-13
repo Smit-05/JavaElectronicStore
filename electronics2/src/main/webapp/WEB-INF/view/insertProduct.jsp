@@ -27,7 +27,7 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 			<h5 class="card-header">Insert New Item</h5>
 			<div class="card-body">
 				<form autocomplete="off" method="POST" id="form_item"
-					action="insert_product">
+					action="insert_product" enctype="multipart/form-data">
 					<div class="input-group mb-3">
 						<span class="input-group-text">Item Name:</span> <input
 							type="text" class="form-control" id="i_name" name="pName"
@@ -61,7 +61,7 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 					<div class="input-group mb-3 col-md">
 						<div class="input-group">
 							<input type="file" class="form-control" id="inputGroupFile02"
-								name="pPic" path="pPic"> <label class="input-group-text"
+								name="photo" path="pPic"> <label class="input-group-text"
 								for="inputGroupFile02">Choose photo of item...</label>
 						</div>
 
@@ -72,8 +72,8 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 					<div class="mb-3 col-md">
 						<div class="input-group mb-3 col">
 							<label class="input-group-text" for="item_cat">Select
-								Category</label> <select name="category_cId" path="category_cId"
-								form="form_item" class="form-select category" id="item_cat1"
+								Category</label> <select name="cId" path="category_cId"
+								form="form_item" class="form-select category" id="cId"
 								onchange="set_reverse_cat(this)">
 								<option selected>Choose a category</option>
 								<%
@@ -87,6 +87,24 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 							</select>
 						</div>
 					</div>
+										<div class="mb-3 col-md">
+						<div class="input-group mb-3 col">
+							<label class="input-group-text" for="item_cat">Select
+								Category</label> <select name="cName" path="category_cId"
+								form="form_item" class="form-select category" id="cName"
+								onchange="set_reverse_cat(this)">
+								<option selected>Choose a category</option>
+								<%
+								for (Category cat : catWrapper.categories) {
+								%>
+								<option value="<%=cat.getcName()%>"><%=cat.getcName()%></option>
+								<%
+								}
+								%>
+							</select>
+						</div>
+					</div>
+					
 					<button class="btn btn-info mt-5 mx-auto d-flex" id="add_item">Add
 						Item</button>
 				</form>
