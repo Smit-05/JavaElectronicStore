@@ -35,8 +35,7 @@ public class CategoryController {
 		List<Category> categories = catService.getAllCategory();
 		
 		if(categories.isEmpty()) {
-			catService.addCategory(category);
-			mv.setViewName("adminHome");
+			flag = true;
 		}else {
 			for(Category c: categories) {
 				if(!c.getcName().equals(category.getcName())) {

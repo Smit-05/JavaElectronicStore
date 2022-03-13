@@ -1,6 +1,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
@@ -8,15 +10,18 @@
 
 	<!-- Specifying base package of the Components like Controller, Service, 
 		DAO -->
-	<context:component-scan base-package="controller,dao,model,service" />
+	<context:component-scan
+		base-package="controller,dao,model,service" />
 
 	<!-- Getting Database properties -->
-	<context:property-placeholder location="classpath:resources/application.properties" />
+	<context:property-placeholder
+		location="classpath:resources/application.properties" />
 
 	<mvc:annotation-driven />
 
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
-	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/resources/**"
+		location="/resources/" />
 
 
 	<!-- View Resolver -->
@@ -27,7 +32,8 @@
 	</bean>
 
 	<!-- DataSource -->
-	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+	<bean
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		id="dataSource">
 		<property name="driverClassName" value="${database.driver}"></property>
 		<property name="url" value="${database.url}"></property>
@@ -56,5 +62,12 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+
+
+	<!-- configuring multipart resolver -->
+	<bean name="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
 </beans>

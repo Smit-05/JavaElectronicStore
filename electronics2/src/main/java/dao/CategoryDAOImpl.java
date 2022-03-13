@@ -10,6 +10,8 @@ import model.Category;
 
 @Repository
 public class CategoryDAOImpl implements CategoryDAO{
+	
+	public List<Category> categories;
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -21,8 +23,10 @@ public class CategoryDAOImpl implements CategoryDAO{
 
 	@Override
 	public List<Category> getAllCategory() {
-
 		 return sessionFactory.getCurrentSession().createQuery("from Category").list();
 	}
 
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
 }
