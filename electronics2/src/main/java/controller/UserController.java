@@ -89,15 +89,18 @@ public class UserController {
 		
 		boolean flag = false;
 		String role = null;
+		int uid = 0;
 		for(User u:allUsers) {
 			if( name.equals(u.getuName()) && pass.equals(u.getPassword()) ) {
 				flag = true;
 				role = u.getRole();
+				uid = u.getuId();
 			}
 		}
 		if(flag == true) {
 			HttpSession session = req.getSession();
 			session.setAttribute("userName",name);
+			session.setAttribute("uid",uid);
 			mv.addObject("uname",name);
 			if(role.equals("Customer")) {
 				mv.setViewName("customerHome");
@@ -119,5 +122,46 @@ public class UserController {
 		mv.setViewName("login");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/viewCustomer", method = RequestMethod.GET)
+	public ModelAndView viewCustomer(ModelAndView mv) {
+		List<User> allCustomer = userService.getAllCustomer();
+		mv.addObject("customerList", allCustomer);
+		mv.setViewName("viewcustomer");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/customerProfile", method = RequestMethod.GET)
+	public ModelAndView customerProfile(ModelAndView mv,HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		int uid = (int) session.getAttribute("uid");
+		User customer = userService.getUser(uid);
+		mv.addObject("customer", customer);
+		mv.setViewName("CustomerProfile");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/adminProfile", method = RequestMethod.GET)
+	public ModelAndView adminProfile(ModelAndView mv,HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		int uid = (int) session.getAttribute("uid");
+		User admin = userService.getUser(uid);
+		mv.addObject("admin", admin);
+		mv.setViewName("adminProfile");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/adminHome", method = RequestMethod.GET)
+	public ModelAndView adminHome(ModelAndView mv) {
+		mv.setViewName("adminHome");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/customerHome", method = RequestMethod.GET)
+	public ModelAndView customerHome(ModelAndView mv) {
+		mv.setViewName("customerHome");
+		return mv;
+	}
+	
 	
 }

@@ -10,4 +10,10 @@ public interface UserService {
 	
 	public List<User> getAllUsers();
 	
+	public List<User> getAllCustomer();
+	
+	public User getUser(int uid);
+	
+	public void updateUser(User user);
+	
 }
