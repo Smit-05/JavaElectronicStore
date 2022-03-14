@@ -12,7 +12,7 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="False"%>
-<%@include file="../../resources/header/adminHeader.jsp"%>
+<%@include file="../../resources/header/customerHeader.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
