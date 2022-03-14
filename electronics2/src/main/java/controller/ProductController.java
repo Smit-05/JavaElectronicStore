@@ -18,6 +18,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.CategoryDAOImpl;
+import dao.ProductDAOImpl;
 import model.Category;
 import model.Product;
 import service.CategoryService;
@@ -38,6 +39,19 @@ public class ProductController {
 		CategoryDAOImpl catWrapper = new CategoryDAOImpl();
 		catWrapper.setCategories(categories);
 		mv.addObject("catWrapper", catWrapper);
+		return mv;
+	}
+	
+	@RequestMapping("/product_list")
+	public ModelAndView productList(ModelAndView mv) {
+		mv.setViewName("productListxxx");
+		List<Product> products = productService.getAllProducts();
+		for(Product poo: products) {
+			System.out.println(poo);
+		}
+		ProductDAOImpl productsWrapper = new ProductDAOImpl();
+		productsWrapper.setProducts(products);
+		mv.addObject("productsWrapper", productsWrapper);
 		return mv;
 	}
 
