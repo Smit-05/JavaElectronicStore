@@ -88,7 +88,7 @@ public class ProductController {
 			mv.addObject("message", "Something went wrong while uploading item photo... please try again...");
 		}
 
-		mv.setViewName("adminHome");
+		mv.setViewName("login");
 
 		if (err) {
 			return mv;
