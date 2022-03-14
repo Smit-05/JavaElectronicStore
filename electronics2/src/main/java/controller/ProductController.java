@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
@@ -35,60 +36,123 @@ public class ProductController {
 	@RequestMapping("/i_product")
 	public ModelAndView register(ModelAndView mv) {
 		mv.setViewName("insertProduct");
+
+		List<Category> categories = catService.getAllCategory();
+		CategoryDAOImpl catWrapper = new CategoryDAOImpl();
+		catWrapper.setCategories(categories);
+		mv.addObject("catWrapper", catWrapper);
+
+		return mv;
+	}
+
+	@RequestMapping("/i_delete")
+	public ModelAndView delete(ModelAndView mv, HttpServletRequest request, HttpSession s) {
+		mv.setViewName("productList");
+
+		int pid = Integer.parseInt(request.getParameter("delete"));
+
+		String path = s.getServletContext().getRealPath("/") + "resources" + File.separator + "images" + File.separator
+				+ "products" + File.separator + productService.getProduct(pid).getpPic();
+
+		File file = new File(path);
+		System.out.println(path);
+		if (file.delete()) {
+			System.out.println("File deleted successfully");
+		} else {
+			System.out.println("Failed to delete the file");
+		}
+
+		if (productService.deleteProduct(pid)) {
+			mv.addObject("success_message", "Product is Successfully deleted...");
+		} else {
+			mv.addObject("message", "Something went wrong while deleting product... please try again...");
+		}
+		ProductDAOImpl productsWrapper = new ProductDAOImpl();
+		productsWrapper.setProducts(productService.getAllProducts());
+		mv.addObject("productsWrapper", productsWrapper);
+		return mv;
+	}
+
+	@RequestMapping("/i_update")
+	public ModelAndView update(ModelAndView mv, HttpServletRequest request) {
+		mv.setViewName("updateProduct");
+
+		int pid = Integer.parseInt(request.getParameter("update"));
+		Product product = productService.getProduct(pid);
+		mv.addObject("product", product);
+
 		List<Category> categories = catService.getAllCategory();
 		CategoryDAOImpl catWrapper = new CategoryDAOImpl();
 		catWrapper.setCategories(categories);
 		mv.addObject("catWrapper", catWrapper);
 		return mv;
 	}
-	
+
 	@RequestMapping("/product_list")
 	public ModelAndView productList(ModelAndView mv) {
-		mv.setViewName("productListxxx");
-		List<Product> products = productService.getAllProducts();
-		for(Product poo: products) {
-			System.out.println(poo);
-		}
+		mv.setViewName("productList");
 		ProductDAOImpl productsWrapper = new ProductDAOImpl();
-		productsWrapper.setProducts(products);
+		productsWrapper.setProducts(productService.getAllProducts());
 		mv.addObject("productsWrapper", productsWrapper);
 		return mv;
 	}
 
 	@RequestMapping(value = "/insert_product", method = RequestMethod.POST)
 	public ModelAndView prductInsert(@ModelAttribute Product product, @RequestParam("cId") int cid,
-			@RequestParam("cName") String cname, @RequestParam("photo") CommonsMultipartFile file, ModelAndView mv,
-			HttpSession s) {
+			@RequestParam("photo") CommonsMultipartFile file, ModelAndView mv, HttpSession s) {
+
+		List<Category> categories = catService.getAllCategory();
+		String cat_name = "";
+		for (Category cat : categories) {
+			if (cid == cat.getcId()) {
+				cat_name = cat.getcName();
+				break;
+			}
+		}
+		if (cat_name.isEmpty()) {
+			System.out.println("Product category err.");
+			mv.setViewName("Err page");
+			return mv;
+		}
 
 		Category pcat = new Category();
 		pcat.setcId(cid);
-		pcat.setcName(cname);
+		pcat.setcName(cat_name);
 		product.setCategory(pcat);
 
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		String uniqueFileName = timestamp.getTime() + "." + FilenameUtils.getExtension(file.getOriginalFilename());
-
-		product.setpPic(uniqueFileName);
-
-		byte[] data = file.getBytes();
-		String path = s.getServletContext().getRealPath("/") + "resources" + File.separator + "images" + File.separator
-				+ "products" + File.separator + uniqueFileName;
-		System.out.println(path);
-
 		boolean err = false;
-		try {
-			FileOutputStream fos = new FileOutputStream(path);
-			fos.write(data);
-			fos.close();
-			System.out.println("File uploaded");
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("File upload err");
-			err = true;
-			mv.addObject("message", "Something went wrong while uploading item photo... please try again...");
+		if (!FilenameUtils.getExtension(file.getOriginalFilename()).isEmpty()) {
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+			String uniqueFileName = timestamp.getTime() + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+
+			if(product.getpId() > 0) {
+				uniqueFileName =productService.getProduct(product.getpId()).getpPic();
+			}
+			
+			product.setpPic(uniqueFileName);
+
+			byte[] data = file.getBytes();
+			String path = s.getServletContext().getRealPath("/") + "resources" + File.separator + "images"
+					+ File.separator + "products" + File.separator + uniqueFileName;
+			System.out.println(path);
+
+			try {
+				FileOutputStream fos = new FileOutputStream(path);
+				fos.write(data);
+				fos.close();
+				System.out.println("File uploaded");
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("File upload err");
+				err = true;
+				mv.addObject("message", "Something went wrong while uploading item photo... please try again...");
+			}
+
+		} else {
+			product.setpPic(productService.getProduct(product.getpId()).getpPic());
 		}
 
-		mv.setViewName("login");
+		mv.setViewName("productList");
 
 		if (err) {
 			return mv;
@@ -101,6 +165,11 @@ public class ProductController {
 		} else {
 			mv.addObject("success_message", "Product is Successfully inserted...");
 		}
+
+		ProductDAOImpl productsWrapper = new ProductDAOImpl();
+		productsWrapper.setProducts(productService.getAllProducts());
+		mv.addObject("productsWrapper", productsWrapper);
 		return mv;
 	}
+
 }
