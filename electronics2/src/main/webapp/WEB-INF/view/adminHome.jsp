@@ -20,7 +20,7 @@ a{text-decoration: none; }
 		<div class="row p-2">
 		
 			<div class="col-md-6">
-				<a href="viewCustomer">
+				<a href="i_product">
 					<div class="card m-3" style="height: 25vh">
 					<div class="card-body">
 					<img class="m-4" alt="" src="resources/images/plus-circle.svg" style="height: 50px;width: 50px;"/><br>
@@ -30,7 +30,7 @@ a{text-decoration: none; }
 			</div>
 			
 			<div class="col-md-6">
-				<a href="viewCustomer">
+				<a href="category">
 					<div class="card m-3" style="height: 25vh">
 					<div class="card-body">
 					<img class="m-4" alt="" src="resources/images/folder-plus.svg" style="height: 50px;width: 50px;"/><br>

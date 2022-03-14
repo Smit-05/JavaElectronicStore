@@ -13,25 +13,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
+	<div class="container">
 		<h1>Customer List</h1>
 		
-		<table border="1">
+		<table class="table">
 
-			<th>User Id</th>
-			<th>Name</th>
-			<th>Email</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Middle Name</th>
-			<th>Phone no.</th>
-			<th>Address</th>
-			<th>D.O.B</th>
+			<th scope="col">User Id</th>
+			<th scope="col">Name</th>
+			<th scope="col">Email</th>
+			<th scope="col">First Name</th>
+			<th scope="col">Last Name</th>
+			<th scope="col">Middle Name</th>
+			<th scope="col">Phone no.</th>
+			<th scope="col">Address</th>
+			<th scope="col">D.O.B</th>
 
 			<c:forEach var="customer" items="${customerList}">
 				<tr>
 
-					<td>${customer.uId}</td>
+					<th scope="row">${customer.uId}</th>
 					<td>${customer.uName}</td>
 					<td>${customer.emailId}</td>
 					<td>${customer.fName}</td>
@@ -45,8 +45,7 @@
 			</c:forEach>
 		</table>
 	</div>
-
-</body>
+	</body>
 </html>
 <% 
 	}

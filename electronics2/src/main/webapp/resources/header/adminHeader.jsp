@@ -28,9 +28,6 @@
                 <a class="nav-link active" aria-current="page" href="adminHome">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="viewCustomer">View Customers</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="adminProfile">My Profile</a>
               </li>
               <li class="nav-item">
