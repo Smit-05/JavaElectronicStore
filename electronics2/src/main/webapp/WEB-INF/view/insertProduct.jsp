@@ -1,4 +1,3 @@
-
 <%@page import="dao.CategoryDAOImpl"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.List"%>
