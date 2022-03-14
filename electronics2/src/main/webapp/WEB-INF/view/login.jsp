@@ -64,7 +64,7 @@
 			</div>
 	   </c:if>
 		
-		<form  action="validateUser" method="post">
+		<form action="validateUser" method="post">
 		
 			<!-- <div class="form-control mb-3">
 			  <label for="Name">Username</label>

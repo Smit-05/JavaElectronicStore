@@ -43,41 +43,91 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
-	public ModelAndView saveUser(@ModelAttribute User user,ModelAndView mv) {
+	public ModelAndView saveUser(@ModelAttribute User user,ModelAndView mv,HttpServletRequest req) {
 		List<User> allUsers = userService.getAllUsers();
 		
-		boolean flag = false;
-		
-		if(allUsers.isEmpty()) {
-			userService.addUser(user);
-			mv.setViewName("login");
-		}else {
-			for(User u:allUsers) {
-				if(!(u.getuName()).equals(user.getuName())) {
-					
-					if(!(u.getEmailId()).equals(user.getEmailId())) {
+		if(user.getuId() == 0) {
+			boolean flag = false;
+			
+			if(allUsers.isEmpty()) {
+				userService.addUser(user);
+				mv.setViewName("login");
+			}else {
+				for(User u:allUsers) {
+					if(!(u.getuName()).equals(user.getuName())) {
 						
-						flag = true;
+						if(!(u.getEmailId()).equals(user.getEmailId())) {
+							
+							flag = true;
+							
+						}else {
+							mv.addObject("message","E-mail Id is already taken.Please take another one.");
+							mv.setViewName("registerForm");
+							return mv;
+						}
 						
 					}else {
-						mv.addObject("message","E-mail Id is already taken.Please take another one.");
+						mv.addObject("message","Username is already taken.Please take another one.");
 						mv.setViewName("registerForm");
 						return mv;
 					}
+				}
+				
+				if(flag==true) {
+					userService.addUser(user);
+					mv.addObject("success_message","User Successfully registered Now login...");
+					mv.setViewName("login");
+				}
+			}
+		}else {
+			boolean flag = false;
+			
+			for(User u:allUsers) {
+				if( (!(u.getuName()).equals(user.getuName())) ) {
+					
+					if(  ( !(u.getEmailId()).equals(user.getEmailId()) )  ) {
+						
+						if( u.getuId() != user.getuId() ) {
+							flag = true;
+						}
+						
+					}else {
+						if( u.getuId() != user.getuId() ) {
+							mv.addObject("message","E-mail Id is already taken.Please take another one.");
+							mv.setViewName("updateProfilePage");
+							return mv;
+						}else {
+							continue;
+						}
+					}
 					
 				}else {
-					mv.addObject("message","Username is already taken.Please take another one.");
-					mv.setViewName("registerForm");
-					return mv;
+					if( u.getuId() != user.getuId() ) {
+						mv.addObject("message","Username is already taken.Please take another one.");
+						mv.setViewName("updateProfilePage");
+						return mv;
+					}else {
+						continue;
+					}
 				}
 			}
 			
 			if(flag==true) {
-				userService.addUser(user);
-				mv.addObject("success_message","User Successfully registered Now login...");
-				mv.setViewName("login");
+				userService.updateUser(user);
+				mv.addObject("success_message","User's profile is updated successfully...");
+				HttpSession session = req.getSession();
+				session.setAttribute("userName",user.getuName());
+				if((user.getRole()).equals("Customer")) {
+					mv.addObject("customer", user);
+					mv.setViewName("CustomerProfile");
+				}else {
+					mv.addObject("admin", user);
+					mv.setViewName("adminProfile");
+				}
 			}
+			
 		}
+		
 		
 		return mv;
 	}
@@ -124,43 +174,81 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/viewCustomer", method = RequestMethod.GET)
-	public ModelAndView viewCustomer(ModelAndView mv) {
-		List<User> allCustomer = userService.getAllCustomer();
-		mv.addObject("customerList", allCustomer);
-		mv.setViewName("viewcustomer");
-		return mv;
+	public ModelAndView viewCustomer(ModelAndView mv,HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		if(	session.getAttribute("uid") != null ) {
+			List<User> allCustomer = userService.getAllCustomer();
+			mv.addObject("customerList", allCustomer);
+			mv.setViewName("viewcustomer");
+			return mv;
+		}
+		else
+			return new ModelAndView("redirect:/");
 	}
 	
 	@RequestMapping(value = "/customerProfile", method = RequestMethod.GET)
 	public ModelAndView customerProfile(ModelAndView mv,HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		int uid = (int) session.getAttribute("uid");
-		User customer = userService.getUser(uid);
-		mv.addObject("customer", customer);
-		mv.setViewName("CustomerProfile");
-		return mv;
+		if( session.getAttribute("uid") != null ) {
+			int uid = (int) session.getAttribute("uid");
+			User customer = userService.getUser(uid);
+			mv.addObject("customer", customer);
+			mv.setViewName("CustomerProfile");
+			return mv;
+		}
+		else
+			return new ModelAndView("redirect:/");
+		
 	}
 	
 	@RequestMapping(value = "/adminProfile", method = RequestMethod.GET)
 	public ModelAndView adminProfile(ModelAndView mv,HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		int uid = (int) session.getAttribute("uid");
-		User admin = userService.getUser(uid);
-		mv.addObject("admin", admin);
-		mv.setViewName("adminProfile");
-		return mv;
+		if( session.getAttribute("uid") != null ) {
+			int uid = (int) session.getAttribute("uid");
+			User admin = userService.getUser(uid);
+			mv.addObject("admin", admin);
+			mv.setViewName("adminProfile");
+			return mv;
+		}
+		else
+			return new ModelAndView("redirect:/");
+	}
+
+	@RequestMapping(value = "/updateProfile", method = RequestMethod.GET)
+	public ModelAndView updateProfile(ModelAndView mv,HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		if( session.getAttribute("uid") != null ) {
+			int uid = (int) session.getAttribute("uid");
+			User user = userService.getUser(uid);
+			mv.addObject("user", user);
+			mv.setViewName("updateProfilePage");
+			return mv;
+		}
+		else
+			return new ModelAndView("redirect:/");
 	}
 	
 	@RequestMapping(value = "/adminHome", method = RequestMethod.GET)
-	public ModelAndView adminHome(ModelAndView mv) {
-		mv.setViewName("adminHome");
-		return mv;
+	public ModelAndView adminHome(ModelAndView mv,HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		if( session.getAttribute("uid") != null ) {
+			mv.setViewName("adminHome");
+			return mv;
+		}
+		else
+			return new ModelAndView("redirect:/");
 	}
 	
 	@RequestMapping(value = "/customerHome", method = RequestMethod.GET)
-	public ModelAndView customerHome(ModelAndView mv) {
-		mv.setViewName("customerHome");
-		return mv;
+	public ModelAndView customerHome(ModelAndView mv,HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		if( session.getAttribute("uid") != null ) {
+			mv.setViewName("customerHome");
+			return mv;
+		}
+		else
+			return new ModelAndView("redirect:/");
 	}
 	
 	
