@@ -1,10 +1,18 @@
+<%@page import="model.Product"%>
+<%@page import="dao.ProductDAOImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="False"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Product List</title>
+
+<%@include file="../../resources/header/adminHeader.jsp"%>
+
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+	
 </head>
 <body>
 	<div class="m-3 table-responsive">
@@ -24,69 +32,55 @@
 			</thead>
 			<tbody>
 
+				<%
+				ProductDAOImpl prodWrapper = (ProductDAOImpl) request.getAttribute("productsWrapper");
+				for (Product prod : prodWrapper.products) {
+				%>
 
-				<?php
-                $query = "select * from items";
-                $result = mysqli_query($conn, $query);
-                if (is_nan(mysqli_num_rows($result)) || mysqli_num_rows($result) == 0) {
-                    echo "<p class='display-4 text-primary text-center mt-5'>Not Any Item is inserted.</p>";
-                } else {
-                    while ($data = mysqli_fetch_assoc($result)) {
-                        echo "<tr id='" . $data['i_id'] . "'>";
-                        echo "<td> <a type='button' href='./i_update.php?update=" . $data['i_id'] . "' class='btn btn-outline-primary edit'>Edit</a> </td>"; //edit
-                        echo "<td>" . $data['i_name'] . "</td>";
-                        echo "<td>" . $data['i_price'] . "</td>";
-                        echo "<td>" . $data['i_quantity'] . "</td>";
-                        echo "<td>" . $data['i_unit'] . "</td>";
-                        // echo "<td>" . $data['i_isselling'] . "</td>";
-
-                        echo "<td><div class='form-check form-switch'>";
-
-                ?>
-				<input type="checkbox" class="form-check-input mx-auto"
-					id="<?php echo $data['i_id']; ?>"
-					onclick='activation(this,"<?php echo $data['i_name']; ?>")'
-				<?php
-                                                                                                                                                                                if ($data['i_isselling'] == 1) {
-                                                                                                                                                                                    echo "checked";
-                                                                                                                                                                                }
-                                                                                                                                                                                ?>
-				>
-				<?php
-                        echo "</td></div>";
-
-                        echo "<input type='hidden' value='" . $data['i_photo'] . "'>";
-                        echo "<td> <a type='button' onclick='return delete_confirm()' href='./partial/i_delete.php?delete=" . $data['i_id'] . "' class='btn btn-outline-danger'>Delete</a> </td>"; //delete
-                        echo "</tr>";
-                    }
-                }
-                ?>
+				<tr id="<%=prod.getpId()%>">
+					<td><a type='button'
+						href='i_update?update=<%=prod.getpId()%>'
+						class='btn btn-outline-primary edit'>Edit</a></td>
+					<td><%=prod.getpName()%></td>
+					<td><%=prod.getpDesc()%></td>
+					<td><%=prod.getpPrice()%></td>
+					<td><%=prod.getpDiscount()%></td>
+					<td><%=prod.getCategory().getcName()%></td>
+					<td><%=prod.getpQuantity()%></td>
+					<td><a type='button' onclick='return delete_confirm()'
+						href='i_delete?delete=<%=prod.getpId()%>'
+						class='btn btn-outline-danger'>Delete</a></td>
+				</tr>
 
 
+				<%
+				}
+				%>
 
 			</tbody>
 		</table>
 
 	</div>
-	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 	<script>
-    function delete_confirm() {
-        if (confirm("Are you sure to delete it.")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    /* Initialise the table with the required column ordering data types */
+		function delete_confirm() {
+			if (confirm("Are you sure to delete it.")) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		/* Initialise the table with the required column ordering data types */
 
-    $(document).ready(function() {
-        $('#myTable').DataTable({
-            "dom": ' <"#length"l><"#search"f>rt<"info"i><"page"p>',
-            "stateSave": true
-        });
-    });
-
-</script>
+		$(document).ready(function() {
+			$('#myTable').DataTable({
+				"dom" : ' <"#length"l><"#search"f>rt<"info"i><"page"p>',
+				"stateSave" : true
+			});
+		});
+	</script>
 </body>
 </html>
 

@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 public class Product {
 
@@ -15,7 +17,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(length = 10)
 	private int pId;
-	@Column(length = 50)
+	@Column(length = 50,unique = true)
 	private String pName;
 	@Column(length = 1000)
 	private String pDesc;
