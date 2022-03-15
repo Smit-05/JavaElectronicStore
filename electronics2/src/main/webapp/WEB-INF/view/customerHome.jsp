@@ -15,6 +15,7 @@
 <body>
 
 	<h2>Customer Home page</h2>
+	<a href="displayCart">View Cart</a>
 
 </body>
 </html>

@@ -28,4 +28,16 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.getAllProducts();
 	}
 
+	@Override
+	@Transactional
+	public Product getProduct(int pid) {
+		return productDao.getProduct(pid);
+	}
+	
+	@Override
+	@Transactional
+	public void updateProduct(Product product) {
+		productDao.updateProduct(product);
+	}
+	
 }

@@ -9,4 +9,8 @@ public interface ProductDAO {
 	
 	public List<Product> getAllProducts();
 	
+	public Product getProduct(int pid);
+	
+	public void updateProduct(Product product);
+	
 }

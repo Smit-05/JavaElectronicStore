@@ -23,6 +23,14 @@ public class ProductDAOImpl implements ProductDAO {
 		return sessionFactory.getCurrentSession().createQuery("from product").list();
 	}
 
+	@Override
+	public Product getProduct(int pid) {
+		return (Product) sessionFactory.getCurrentSession().get(Product.class,pid);
+	}
 	
+	@Override
+	public void updateProduct(Product product) {
+		sessionFactory.getCurrentSession().update(product);
+	}
 	
 }
