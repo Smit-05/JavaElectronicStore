@@ -5,12 +5,16 @@ import model.Product;
 
 public interface ProductDAO {
 	
-	public boolean addCategory(Product product);
+	public boolean addProduct(Product product);
 	
 	public List<Product> getAllProducts();
 	
-	public Product getProduct(int pid);
+
+	public boolean deleteProduct(int id);
 	
-	public void updateProduct(Product product);
+	public Product getProduct(int id);
+	
+	public boolean updateProduct(Product product);
+
 	
 }

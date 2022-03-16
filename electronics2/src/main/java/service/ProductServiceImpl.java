@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	@Transactional
 	public boolean addProduct(Product product) {
-		return productDao.addCategory(product);
+		return productDao.addProduct(product);
 	}
 
 	@Override
@@ -30,14 +30,20 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional
-	public Product getProduct(int pid) {
-		return productDao.getProduct(pid);
+
+	public boolean deleteProduct(int id) {
+		return productDao.deleteProduct(id);
 	}
-	
+
+	@Override
+	public Product getProduct(int id) {
+		return productDao.getProduct(id);
+	}
+
 	@Override
 	@Transactional
-	public void updateProduct(Product product) {
-		productDao.updateProduct(product);
+	public boolean updateProduct(Product product) {
+		return productDao.updateProduct(product);
 	}
-	
+
 }

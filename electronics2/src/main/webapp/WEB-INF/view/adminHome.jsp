@@ -5,21 +5,30 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="False"%>
 <%@include file="../../resources/header/adminHeader.jsp" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style type="text/css">
+a{text-decoration: none; }
+</style>
 </head>
 <body>
 
-	<c:if test = "${not empty message}">
-			<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-		    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-				${message}
-				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	<div class="container mt-4 text-center">
+		<div class="row p-2">
+		
+			<div class="col-md-6">
+				<a href="i_product">
+					<div class="card m-3" style="height: 25vh">
+					<div class="card-body">
+					<img class="m-4" alt="" src="resources/images/plus-circle.svg" style="height: 50px;width: 50px;"/><br>
+					<h4>Add Product</h4> </div>
+				</div>
+				</a>
 			</div>
+
 	</c:if>
 	<c:if test = "${not empty success_message}">
 			<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
@@ -32,9 +41,56 @@
 
 	<h2>Admin Home page</h2>
 	
-	<a href="category">Add Category</a>
 	
-	<a href="i_product">Add Product</a>
+
+			<div class="col-md-6">
+				<a href="category">
+					<div class="card m-3" style="height: 25vh">
+					<div class="card-body">
+					<img class="m-4" alt="" src="resources/images/folder-plus.svg" style="height: 50px;width: 50px;"/><br>
+					<h4>Add Category</h4></div>
+				</div>
+				</a>
+			</div>
+			
+		</div>
+		
+		<div class="row p-2">
+		
+			<div class="col-md-4">
+				<a href="viewCustomer">
+					<div class="card m-3" style="height: 25vh;">
+						
+						<div class="card-body">
+							<img class="m-4" alt="" src="resources/images/users.svg" style="height: 50px;width: 50px;"/><br>
+							<h4>View Customers</h4>
+						</div>
+					</div>
+				</a>
+			</div>
+			
+			<div class="col-md-4">
+				<a href="viewCustomer">
+					<div class="card m-3" style="height: 25vh">
+					<div class="card-body"><img class="m-4" alt="" src="resources/images/package.svg" style="height: 50px;width: 50px;"/><br>
+					<h4>View Products</h4>
+					</div>
+				</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="viewCustomer">
+					<div class="card m-3" style="height: 25vh">
+					<div class="card-body"><img class="m-4" alt="" src="resources/images/truck.svg" style="height: 50px;width: 50px;"/><br>
+					<h4>View Orders</h4>
+					</div>
+				</div>
+				</a>
+			</div>
+			
+		</div>
+	</div>
+
 	
 </body>
 </html>

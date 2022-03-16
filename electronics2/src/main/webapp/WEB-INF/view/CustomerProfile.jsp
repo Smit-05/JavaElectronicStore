@@ -4,7 +4,7 @@
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="False"%> 
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <%@include file="../../resources/header/customerHeader.jsp" %>
 
 <!DOCTYPE html>
@@ -17,14 +17,6 @@
 
 	<h2>-: Profile :-</h2>
 	
-	<c:if test = "${not empty success_message}">
-	        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-		        <div class="alert alert-success alert-dismissible fade show" role="alert">
-					  ${success_message}
-			    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-	</c:if>
-	<br>
 	Name :- ${customer.uName}
 	<br>
 	E-mail :- ${customer.emailId}
@@ -42,7 +34,7 @@
 	D.O.B :- ${customer.dob}
 	<br>
 
-	<a href="updateProfile">Update Profile</a>
+	<a href="#">Update Profile</a>
 	
 </body>
 </html>
