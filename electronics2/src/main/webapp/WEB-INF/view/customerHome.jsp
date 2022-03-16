@@ -15,6 +15,9 @@
 <body>
 
 	<h2>Customer Home page</h2>
+
+	<a href="displayCart">View Cart</a>
+
 	<div class="row">
 		<div class=col-md-3>
 			<div class="list-group">

@@ -28,7 +28,21 @@ a{text-decoration: none; }
 				</div>
 				</a>
 			</div>
-			
+
+	</c:if>
+	<c:if test = "${not empty success_message}">
+			<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+		    <div class="alert alert-success alert-dismissible fade show" role="alert">
+				${success_message}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+	</c:if>
+	
+
+	<h2>Admin Home page</h2>
+	
+	
+
 			<div class="col-md-6">
 				<a href="category">
 					<div class="card m-3" style="height: 25vh">
@@ -76,6 +90,7 @@ a{text-decoration: none; }
 			
 		</div>
 	</div>
+
 	
 </body>
 </html>

@@ -30,6 +30,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional
+
 	public boolean deleteProduct(int id) {
 		return productDao.deleteProduct(id);
 	}
