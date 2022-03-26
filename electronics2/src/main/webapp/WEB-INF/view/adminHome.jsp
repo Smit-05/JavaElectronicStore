@@ -16,7 +16,18 @@ a{text-decoration: none; }
 </head>
 <body>
 
+	<c:if test = "${not empty success_message}">
+			<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+		    <div class="alert alert-success alert-dismissible fade show" role="alert">
+				${success_message}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+	</c:if>
+	
+
+	
 	<div class="container mt-4 text-center">
+		<h2>Admin Home page</h2>
 		<div class="row p-2">
 		
 			<div class="col-md-6">
@@ -29,19 +40,6 @@ a{text-decoration: none; }
 				</a>
 			</div>
 
-	</c:if>
-	<c:if test = "${not empty success_message}">
-			<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-		    <div class="alert alert-success alert-dismissible fade show" role="alert">
-				${success_message}
-				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-	</c:if>
-	
-
-	<h2>Admin Home page</h2>
-	
-	
 
 			<div class="col-md-6">
 				<a href="category">
@@ -70,7 +68,7 @@ a{text-decoration: none; }
 			</div>
 			
 			<div class="col-md-4">
-				<a href="viewCustomer">
+				<a href="product_list">
 					<div class="card m-3" style="height: 25vh">
 					<div class="card-body"><img class="m-4" alt="" src="resources/images/package.svg" style="height: 50px;width: 50px;"/><br>
 					<h4>View Products</h4>

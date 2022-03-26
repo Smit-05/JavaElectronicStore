@@ -8,7 +8,6 @@ public interface ProductDAO {
 	public boolean addProduct(Product product);
 	
 	public List<Product> getAllProducts();
-	
 
 	public boolean deleteProduct(int id);
 	
@@ -16,5 +15,6 @@ public interface ProductDAO {
 	
 	public boolean updateProduct(Product product);
 
+	public List<Product> getProductsByCategory(int cid);
 	
 }

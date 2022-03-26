@@ -9,13 +9,12 @@ public interface ProductService {
 
 	public List<Product> getAllProducts();
 	
-	public Product getProduct(int pid);
-	
-	public void updateProduct(Product product);
 
 	public boolean deleteProduct(int id);
 	
 	public Product getProduct(int id);
 	
 	public boolean updateProduct(Product product);
+	
+	public List<Product> getProductsByCategory(int cid);
 }

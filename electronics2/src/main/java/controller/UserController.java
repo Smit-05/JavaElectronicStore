@@ -8,9 +8,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.CategoryDAOImpl;
+import dao.ProductDAOImpl;
+
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
+
+import model.Product;
 import model.User;
+import service.CategoryService;
+import service.ProductService;
+import service.ProductServiceImpl;
 import service.UserService;
 
 import java.util.List;
@@ -18,6 +26,11 @@ import org.jboss.logging.Logger;
 
 @Controller
 public class UserController {
+	
+	@Autowired
+	private ProductService productService;
+	@Autowired
+	private CategoryService catService;
 	
 	private static final Logger logger = Logger.getLogger(UserController.class);
 	
@@ -103,6 +116,16 @@ public class UserController {
 			session.setAttribute("uid",uid);
 			mv.addObject("uname",name);
 			if(role.equals("Customer")) {
+				
+				CategoryDAOImpl catWrapper = new CategoryDAOImpl();
+				catWrapper.setCategories(catService.getAllCategory());
+				mv.addObject("catWrapper",catWrapper);
+				
+				ProductDAOImpl productsWrapper = new ProductDAOImpl();
+				productsWrapper.setProducts(productService.getAllProducts());
+				mv.addObject("productsWrapper", productsWrapper);
+			
+				
 				mv.setViewName("customerHome");
 			}else if(role.equals("Admin")){
 				mv.setViewName("adminHome");
@@ -158,7 +181,24 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/customerHome", method = RequestMethod.GET)
-	public ModelAndView customerHome(ModelAndView mv) {
+	public ModelAndView customerHome(ModelAndView mv,HttpServletRequest req) {
+		
+		
+		CategoryDAOImpl catWrapper = new CategoryDAOImpl();
+		catWrapper.setCategories(catService.getAllCategory());
+		mv.addObject("catWrapper",catWrapper);
+		int cid = Integer.parseInt(req.getParameter("cid"));
+		ProductDAOImpl productsWrapper = new ProductDAOImpl();
+		
+		if(cid>0) {
+			
+			productsWrapper.setProducts(productService.getProductsByCategory(cid));
+		}else {
+			
+			productsWrapper.setProducts(productService.getAllProducts());
+		}
+		mv.addObject("productsWrapper", productsWrapper);
+		
 		mv.setViewName("customerHome");
 		return mv;
 	}

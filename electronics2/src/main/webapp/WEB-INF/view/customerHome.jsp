@@ -1,3 +1,11 @@
+<%@page import="dao.CategoryDAOImpl"%>
+<%@page import="model.Category"%>
+<%@page import="service.CategoryServiceImpl"%>
+<%@page import="dao.ProductDAOImpl"%>
+<%@page import="model.Product"%>
+<%@page import="java.util.List"%>
+<%@page import="service.ProductServiceImpl"%>
+<%@page import="service.ProductService"%>
 <% 
 
 	response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
@@ -21,47 +29,41 @@
 	<div class="row">
 		<div class=col-md-3>
 			<div class="list-group">
-  				<a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-    				The current link item
+				<a href="customerHome?cid=0" class="list-group-item list-group-item-action active"  aria-current="true">
+    				All Products
   				</a>
-  				<a href="#" class="list-group-item list-group-item-action">A second link item</a>
-				<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-				<a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+				<%
+					CategoryDAOImpl catWrapper = (CategoryDAOImpl) request.getAttribute("catWrapper");
+					for(Category c : catWrapper.categories){
+						%>
+							<a href="customerHome?cid=<%=c.getcId() %>" class="list-group-item list-group-item-action"><%=c.getcName() %></a>
+						<% 
+					}
+				%>
+  				
 			</div>
 		</div>
+		
 		<div class="col-md-9">
 			<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="card">
-  						<div class="card-body">
-    						This is some text within a card body.
-  						</div>
+				<div class="row">
+					<%
+						ProductDAOImpl prodWrapper = (ProductDAOImpl) request.getAttribute("productsWrapper");
+						for (Product prod : prodWrapper.products) {
+					%>
+					<div class="col-md-4">
+						<div class="card mt-2">
+                			<img src="<%=prod.getpPic() %>" class="card-img-top" alt="...">
+                			<div class="card-body">
+                    			<h5 class="card-title"><%= prod.getpName() %></h5>
+                    			<p class="card-text"><%=prod.getpDesc() %></p>
+                    			<a href="#" class="btn btn-outline-primary">Go somewhere</a>
+                			</div>
+            			</div>
 					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="card">
-  						<div class="card-body">
-    						This is some text within a card body.
-  						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="card">
-  						<div class="card-body">
-    						This is some text within a card body.
-  						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="card">
-  						<div class="card-body">
-    						This is some text within a card body.
-  						</div>
-					</div>
+					<%} %>
 				</div>
 			</div>
-		</div>
 	
 		</div>	
 	</div>

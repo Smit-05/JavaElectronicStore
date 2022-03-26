@@ -30,7 +30,6 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional
-
 	public boolean deleteProduct(int id) {
 		return productDao.deleteProduct(id);
 	}
@@ -45,5 +44,11 @@ public class ProductServiceImpl implements ProductService {
 	public boolean updateProduct(Product product) {
 		return productDao.updateProduct(product);
 	}
+
+	@Override
+	public List<Product> getProductsByCategory(int cid) {
+		return productDao.getProductsByCategory(cid);
+	}
+	
 
 }
