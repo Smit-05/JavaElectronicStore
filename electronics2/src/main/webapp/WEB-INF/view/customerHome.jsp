@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@page import="dao.CategoryDAOImpl"%>
 <%@page import="model.Category"%>
 <%@page import="service.CategoryServiceImpl"%>
@@ -53,7 +54,7 @@
 					%>
 					<div class="col-md-4">
 						<div class="card mt-2">
-                			<img src="<%=prod.getpPic() %>" class="card-img-top" alt="...">
+                			<img src="resources/images/products/<%=prod.getpPic() %>" class="card-img-top" alt="...">
                 			<div class="card-body">
                     			<h5 class="card-title"><%= prod.getpName() %></h5>
                     			<p class="card-text"><%=prod.getpDesc() %></p>

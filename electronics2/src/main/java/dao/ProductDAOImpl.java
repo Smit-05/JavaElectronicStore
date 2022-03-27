@@ -62,7 +62,6 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public List<Product> getProductsByCategory(int cid) {
 		String query = "FROM Product P WHERE P.category="+cid;
-		System.out.println("Hello");
 		return sessionFactory.getCurrentSession().createQuery(query).list();
 
 	}

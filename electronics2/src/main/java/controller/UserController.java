@@ -21,6 +21,7 @@ import service.ProductService;
 import service.ProductServiceImpl;
 import service.UserService;
 
+import java.io.File;
 import java.util.List;
 import org.jboss.logging.Logger;
 
@@ -181,7 +182,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/customerHome", method = RequestMethod.GET)
-	public ModelAndView customerHome(ModelAndView mv,HttpServletRequest req) {
+	public ModelAndView customerHome(ModelAndView mv,HttpServletRequest req,HttpSession s) {
 		
 		
 		CategoryDAOImpl catWrapper = new CategoryDAOImpl();
@@ -189,7 +190,6 @@ public class UserController {
 		mv.addObject("catWrapper",catWrapper);
 		int cid = Integer.parseInt(req.getParameter("cid"));
 		ProductDAOImpl productsWrapper = new ProductDAOImpl();
-		
 		if(cid>0) {
 			
 			productsWrapper.setProducts(productService.getProductsByCategory(cid));
