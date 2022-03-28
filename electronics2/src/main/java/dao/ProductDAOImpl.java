@@ -1,12 +1,15 @@
 package dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import model.Product;
 
 @Repository
@@ -54,6 +57,13 @@ public class ProductDAOImpl implements ProductDAO {
 	public boolean updateProduct(Product product) {
 		sessionFactory.getCurrentSession().update(product);
 		return true;
+	}
+
+	@Override
+	public List<Product> getProductsByCategory(int cid) {
+		String query = "FROM Product P WHERE P.category="+cid;
+		return sessionFactory.getCurrentSession().createQuery(query).list();
+
 	}
 
 }
