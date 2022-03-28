@@ -7,6 +7,7 @@
 <%@page import="java.util.List"%>
 <%@page import="service.ProductServiceImpl"%>
 <%@page import="service.ProductService"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <% 
 
 	response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
@@ -24,7 +25,7 @@
 <body>
 
 	<h2>Customer Home page</h2>
-
+	
 	<a href="displayCart">View Cart</a>
 	
 	<a href="viewOrders">View Orders</a>
@@ -32,7 +33,7 @@
 	<div class="row">
 		<div class=col-md-3>
 			<div class="list-group">
-				<a href="customerHome?cid=0" class="list-group-item list-group-item-action active"  aria-current="true">
+				<a href="customerHome" class="list-group-item list-group-item-action active"  aria-current="true">
     				All Products
   				</a>
 				<%
@@ -49,6 +50,13 @@
 		
 		<div class="col-md-9">
 			<div class="container">
+			<c:if test = "${not empty error_message}">
+			<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+		    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+				${error_message}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+	    </c:if>
 				<div class="row">
 					<%
 						ProductDAOImpl prodWrapper = (ProductDAOImpl) request.getAttribute("productsWrapper");
@@ -60,7 +68,12 @@
                 			<div class="card-body">
                     			<h5 class="card-title"><%= prod.getpName() %></h5>
                     			<p class="card-text"><%=prod.getpDesc() %></p>
-                    			<a href="#" class="btn btn-outline-primary">Go somewhere</a>
+								<form action="addCart">
+									<input type="hidden" name="pId" value="<%=prod.getpId()%>">
+									<label for="quantity" class="form-label">Quantity</label>
+									<input type="number" style="width: 45px" name="quantity" class="form-number-input" id="quantity" min="1" max="<%=prod.getpQuantity()%>" value="1">
+	                    			<button type="submit" class="btn btn-outline-primary">Add to Cart</button>								
+								</form>
                 			</div>
             			</div>
 					</div>

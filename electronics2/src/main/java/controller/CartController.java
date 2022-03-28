@@ -58,16 +58,23 @@ public class CartController {
 			if(allCartList.isEmpty()) {
 				cartService.addCart(cart);
 				mv.addObject("success_message","Cart is added successfully..");
-				mv.setViewName("login");
+				mv.setViewName("redirect:/customerHome");
 			}else {
 				for(Cart c:allCartList) {
 					if( c.getProduct().getpId() == product.getpId() ) {			
 						flag = false;
+						
 						qua = c.getQuantity() + quantity;
-						c.setQuantity(qua);
-						c.setCartPrice(c.getCartPrice() + ( ( quantity * product.getpPrice() ) - (quantity * ( ( product.getpPrice() * product.getpDiscount() ) / 100 )) ));
-						cartService.updateCart(c);
-						mv.setViewName("login");
+						if(qua>product.getpQuantity()) {
+							mv.addObject("error_message","Not sufficient quantity available");
+							mv.setViewName("forward:/customerHome");
+							return mv;
+						}
+							c.setQuantity(qua);
+							c.setCartPrice(c.getCartPrice() + ( ( quantity * product.getpPrice() ) - (quantity * ( ( product.getpPrice() * product.getpDiscount() ) / 100 )) ));
+							cartService.updateCart(c);
+							mv.setViewName("redirect:/customerHome");
+				
 					}
 				}
 			}
@@ -75,7 +82,7 @@ public class CartController {
 			if(flag == true) {
 				mv.addObject("success_message","Cart is added successfully..");
 				cartService.addCart(cart);
-				mv.setViewName("login");
+				mv.setViewName("redirect:/customerHome");
 			}
 			
 		}else
