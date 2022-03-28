@@ -187,13 +187,12 @@ public class UserController {
 		CategoryDAOImpl catWrapper = new CategoryDAOImpl();
 		catWrapper.setCategories(catService.getAllCategory());
 		mv.addObject("catWrapper",catWrapper);
-		int cid = Integer.parseInt(req.getParameter("cid"));
+		String scid = req.getParameter("cid");
 		ProductDAOImpl productsWrapper = new ProductDAOImpl();
-		if(cid>0) {
-			
+		if(scid!=null) {
+			int cid = Integer.parseInt(scid);			
 			productsWrapper.setProducts(productService.getProductsByCategory(cid));
 		}else {
-			
 			productsWrapper.setProducts(productService.getAllProducts());
 		}
 		mv.addObject("productsWrapper", productsWrapper);
