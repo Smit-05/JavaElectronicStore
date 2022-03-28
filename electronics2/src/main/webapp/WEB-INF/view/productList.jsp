@@ -42,8 +42,8 @@
 					<td><a type='button'
 						href='i_update?update=<%=prod.getpId()%>'
 						class='btn btn-outline-primary edit'>Edit</a></td>
-					<td><%=prod.getpName()%></td>
-					<td><%=prod.getpDesc()%></td>
+					<td class="text-truncate" style="max-width:150px"><%=prod.getpName()%></td>
+					<td class="text-truncate" style="max-width:200px"><%=prod.getpDesc()%></td>
 					<td><%=prod.getpPrice()%></td>
 					<td><%=prod.getpDiscount()%></td>
 					<td><%=prod.getCategory().getcName()%></td>
