@@ -143,8 +143,7 @@ public class UserController {
 	public ModelAndView logout(ModelAndView mv,HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.invalidate();
-		mv.setViewName("login");
-		return mv;
+		return new ModelAndView("redirect:/");
 	}
 	
 	@RequestMapping(value = "/viewCustomer", method = RequestMethod.GET)

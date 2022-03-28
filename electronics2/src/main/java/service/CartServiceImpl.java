@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import dao.CartDAO;
 import model.Cart;
-import model.User;
 
 
 @Service

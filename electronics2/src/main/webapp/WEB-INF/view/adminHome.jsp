@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="False"%>
 <%@include file="../../resources/header/adminHeader.jsp" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,6 @@ a{text-decoration: none; }
 	</c:if>
 	
 
-	
 	<div class="container mt-4 text-center">
 		<h2>Admin Home page</h2>
 		<div class="row p-2">
@@ -39,7 +39,6 @@ a{text-decoration: none; }
 				</div>
 				</a>
 			</div>
-
 
 			<div class="col-md-6">
 				<a href="category">

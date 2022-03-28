@@ -8,7 +8,6 @@ public interface ProductService {
 	public boolean addProduct(Product product);
 
 	public List<Product> getAllProducts();
-	
 
 	public boolean deleteProduct(int id);
 	

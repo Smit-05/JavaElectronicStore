@@ -3,7 +3,6 @@ package service;
 import java.util.List;
 
 import model.Cart;
-import model.User;
 
 public interface CartService {
 
