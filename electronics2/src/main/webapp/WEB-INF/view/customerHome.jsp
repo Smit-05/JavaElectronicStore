@@ -63,11 +63,12 @@
 						for (Product prod : prodWrapper.products) {
 					%>
 					<div class="col-md-4">
-						<div class="card mt-2">
-                			<img src="resources/images/products/<%=prod.getpPic() %>" class="card-img-top" alt="...">
+						<div class="card mt-2 shadow-sm"
+							style="width: 250px; height: 430px;">
+                			<img src="resources/images/products/<%=prod.getpPic() %>" class="card-img-top" alt="Soemthing went wrong while loding image" height="250px">
                 			<div class="card-body">
-                    			<h5 class="card-title"><%= prod.getpName() %></h5>
-                    			<p class="card-text"><%=prod.getpDesc() %></p>
+                    			<h5 class="card-title text-truncate"><%= prod.getpName() %></h5>
+                    			<p class="card-text text-truncate"><%=prod.getpDesc() %></p>
 								<form action="addCart">
 									<input type="hidden" name="pId" value="<%=prod.getpId()%>">
 									<label for="quantity" class="form-label">Quantity</label>
