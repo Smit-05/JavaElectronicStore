@@ -23,24 +23,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<h2>Customer Home page</h2>
 	
-	<a href="displayCart">View Cart</a>
-	
-	<a href="viewOrders">View Orders</a>
-
-	<div class="row">
-		<div class=col-md-3>
+	<div class="row mt-3 ml-3">
+		<div class="col-md-3">
 			<div class="list-group">
-				<a href="customerHome" class="list-group-item list-group-item-action active"  aria-current="true">
+				<a href="customerHome" class="list-group-item list-group-item-action <% if(request.getParameter("cid")== null ) { out.print("active"); } %> "  aria-current="true">
     				All Products
   				</a>
 				<%
 					CategoryDAOImpl catWrapper = (CategoryDAOImpl) request.getAttribute("catWrapper");
 					for(Category c : catWrapper.categories){
 						%>
-							<a href="customerHome?cid=<%=c.getcId() %>" class="list-group-item list-group-item-action"><%=c.getcName() %></a>
+							<a href="customerHome?cid=<%=c.getcId() %>" class="list-group-item list-group-item-action <% if(request.getParameter("cid")!= null && c.getcId()==Integer.parseInt(request.getParameter("cid"))) { out.print("active"); } %>"><%=c.getcName() %></a>
 						<% 
 					}
 				%>
