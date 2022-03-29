@@ -200,5 +200,53 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/updateUser")
+	public ModelAndView updateUser(ModelAndView mv,HttpServletRequest req){
+		HttpSession session = req.getSession();
+		int uid = (int) session.getAttribute("uid");
+		User user = userService.getUser(uid);
+		mv.addObject("user", user);
+		mv.setViewName("updateUser");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/update_user", method=RequestMethod.POST)
+	public ModelAndView update_user(ModelAndView mv,HttpServletRequest req,@RequestParam("password") String password,@RequestParam("role") String role,@RequestParam("uId") int uId,@RequestParam("uName") String uName,@RequestParam("emailId") String emailId,@RequestParam("fName") String fName,@RequestParam("lname") String lname,@RequestParam("mName") String mName,@RequestParam("uPhoneNo") String uPhoneNo,@RequestParam("dob") String dob,@RequestParam("uAddress") String uAddress){
+		List<User> allUsers = userService.getAllUsers();
+		
+		User user = new User();
+		user.setDob(dob);
+		user.setEmailId(emailId);
+		user.setfName(fName);
+		user.setLname(lname);
+		user.setmName(mName);
+		user.setRole(role);
+		user.setuAddress(uAddress);
+		user.setuId(uId);
+		user.setuName(uName);
+		user.setuPhoneNo(uPhoneNo);
+		user.setPassword(password);
+	
+		
+		if(allUsers.isEmpty()) {
+			userService.addUser(user);
+			mv.setViewName("login");
+		}else {
+			
+				userService.addUser(user);
+				mv.addObject("success_message","User Successfully registered Now login...");
+				if(user.getRole().equals("Customer")) {
+					mv.addObject("customer",user);
+					mv.setViewName("CustomerProfile");
+				}else {
+					mv.addObject("admin",user);
+					mv.setViewName("adminProfile");
+				}
+			
+				
+		}
+		
+		return mv;
+	}
 	
 }

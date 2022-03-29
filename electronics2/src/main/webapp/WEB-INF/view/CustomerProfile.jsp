@@ -14,27 +14,103 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<h2>-: Profile :-</h2>
 	
-	Name :- ${customer.uName}
-	<br>
-	E-mail :- ${customer.emailId}
-	<br>
-	First Name :- ${customer.fName}
-	<br>
-	Last Name :- ${customer.lname}
-	<br>
-	Middle Name :- ${customer.mName}
-	<br>
-	Phone no. :- ${customer.uPhoneNo}
-	<br>
-	Address :- ${customer.uAddress}
-	<br>
-	D.O.B :- ${customer.dob}
-	<br>
-
-	<a href="#">Update Profile</a>
+	<section style="background-color: #eee; height: 92vh">
+  <div class="container py-5">
+ 
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">${customer.uName}</h5>
+            <div class="d-flex justify-content-center mb-2">
+              <a href="updateUser"><button type="button" class="btn btn-outline-primary ms-1">Update profile</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Username</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">${customer.uName}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">${customer.emailId}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">First name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">${customer.fName}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Middle name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">${customer.mName}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Last name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">${customer.lname}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone no.</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">${customer.uPhoneNo}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">${customer.uAddress}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Date of Birth</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">${customer.dob}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
 	
 </body>
 </html>
