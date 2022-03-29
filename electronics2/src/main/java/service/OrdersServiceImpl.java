@@ -20,8 +20,12 @@ public class OrdersServiceImpl implements OrdersService{
 		ordersDAO.addOrder(order);
 	}
 	
-	public List allOrdersByUserId(int uid) {
+	public List<Orders> allOrdersByUserId(int uid) {
 		return ordersDAO.allOrdersByUserId(uid);
+	}
+	
+	public List<Orders> getallOrders(){
+		return ordersDAO.getallOrders();
 	}
 	
 }

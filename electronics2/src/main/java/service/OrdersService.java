@@ -8,6 +8,8 @@ public interface OrdersService {
 
 	public void addOrder(Orders order);
 	
-	public List allOrdersByUserId(int uid);
+	public List<Orders> allOrdersByUserId(int uid);
+	
+	public List<Orders> getallOrders();
 	
 }

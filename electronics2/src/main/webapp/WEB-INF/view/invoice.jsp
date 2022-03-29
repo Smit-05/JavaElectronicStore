@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="False"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,24 +99,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="center">1</td>
-                                        <td class="left">Iphone 10</td>
-                                        <!-- <td class="left">Apple iphoe 10 with extended warranty</td> -->
-                                        <td class="left">5%</td>
-                                        <td class="center">16</td>
-                                        <td class="right">$999,00</td>
-                                        <td class="right">$999,00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="center">2</td>
-                                        <td class="left">Samsung S6</td>
-                                        <!-- <td class="left">Samsung S6 with extended warranty</td> -->
-                                        <td class="left">5%</td>
-                                        <td class="center">20</td>
-                                        <td class="right">$150,00</td>
-                                        <td class="right">$3.000,00</td>
-                                    </tr>
+                                	<c:forEach var="cart" items="${cartList}" varStatus="thecount">
+	                                    <tr>
+	                                        <td class="center">${thecount.count}</td>
+	                                        <td class="left">${cart.product.pName}</td>
+	                                        <!-- <td class="left">Apple iphoe 10 with extended warranty</td> -->
+	                                        <td class="left">${cart.product.pDiscount}%</td>
+	                                        <td class="center">${cart.quantity}</td>
+	                                        <td class="right">${cart.product.pPrice}</td>
+	                                        <td class="right">${cart.cartPrice}</td>
+	                                    </tr>
+	                                 </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -126,34 +120,18 @@
                                     <tbody>
                                         <tr>
                                             <td class="left">
-                                                <strong>Subtotal</strong>
-                                            </td>
-                                            <td class="right">$8.497,00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="left">
-                                                <strong>Discount (20%)</strong>
-                                            </td>
-                                            <td class="right">$1,699,40</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="left">
-                                                <strong>VAT (10%)</strong>
-                                            </td>
-                                            <td class="right">$679,76</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="left">
                                                 <strong>Total</strong>
                                             </td>
                                             <td class="right">
-                                                <strong>$7.477,36</strong>
+                                                <strong>$${totalAmount}</strong>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <a class="btn btn-success" href="makePayment" data-abc="true">
-                                    <i class="fa fa-usd"></i> Proceed to Payment</a>
+                                <form action="makePayment">
+                                	<center><button class="btn btn-success" data-abc="true">
+                                    <i class="fa fa-usd"></i> Proceed to Payment</button></center>
+                                </form>
                             </div>
                         </div>
                     </div>

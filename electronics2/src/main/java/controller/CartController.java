@@ -57,7 +57,6 @@ public class CartController {
 			
 			if(allCartList.isEmpty()) {
 				cartService.addCart(cart);
-				mv.addObject("success_message","Cart is added successfully..");
 				mv.setViewName("redirect:/customerHome");
 			}else {
 				for(Cart c:allCartList) {
@@ -70,17 +69,16 @@ public class CartController {
 							mv.setViewName("forward:/customerHome");
 							return mv;
 						}
-							c.setQuantity(qua);
-							c.setCartPrice(c.getCartPrice() + ( ( quantity * product.getpPrice() ) - (quantity * ( ( product.getpPrice() * product.getpDiscount() ) / 100 )) ));
-							cartService.updateCart(c);
-							mv.setViewName("redirect:/customerHome");
-				
+						c.setQuantity(qua);
+						c.setCartPrice(c.getCartPrice() + ( ( quantity * product.getpPrice() ) - (quantity * ( ( product.getpPrice() * product.getpDiscount() ) / 100 )) ));
+						cartService.updateCart(c);
+						mv.setViewName("redirect:/customerHome");
+						
 					}
 				}
 			}
 				
 			if(flag == true) {
-				mv.addObject("success_message","Cart is added successfully..");
 				cartService.addCart(cart);
 				mv.setViewName("redirect:/customerHome");
 			}

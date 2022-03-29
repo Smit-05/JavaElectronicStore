@@ -30,7 +30,8 @@ a{text-decoration: none; }
 		<h2>Admin Home page</h2>
 		<div class="row p-2">
 		
-			<div class="col-md-6">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
 				<a href="i_product">
 					<div class="card m-3" style="height: 25vh">
 					<div class="card-body">
@@ -40,7 +41,7 @@ a{text-decoration: none; }
 				</a>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<a href="category">
 					<div class="card m-3" style="height: 25vh">
 					<div class="card-body">
@@ -49,7 +50,7 @@ a{text-decoration: none; }
 				</div>
 				</a>
 			</div>
-			
+			<div class="col-md-2"></div>
 		</div>
 		
 		<div class="row p-2">
@@ -76,7 +77,7 @@ a{text-decoration: none; }
 				</a>
 			</div>
 			<div class="col-md-4">
-				<a href="viewCustomer">
+				<a href="viewAllOrders">
 					<div class="card m-3" style="height: 25vh">
 					<div class="card-body"><img class="m-4" alt="" src="resources/images/truck.svg" style="height: 50px;width: 50px;"/><br>
 					<h4>View Orders</h4>

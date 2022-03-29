@@ -24,16 +24,17 @@ public class OrdersDAOImpl implements OrdersDAO{
 	}
 	
 	@Override
-	public List allOrdersByUserId(int uid) {
+	public List<Orders> allOrdersByUserId(int uid) {
 		
-		String sql = "SELECT * FROM Orders natural join OrderedItems WHERE uId = :uid";
-		Query query= sessionFactory.getCurrentSession().createSQLQuery(sql);
-		query.setParameter("uid", uid);
+		Query query = sessionFactory.getCurrentSession().createQuery("from Orders where uId = :uid");
+		query.setParameter("uid",uid);
+		return query.getResultList();
 		
-		List<?> list = ((org.hibernate.query.Query) query).list();
-		
-		return list;
-		
+	}
+	
+	@Override
+	public List<Orders> getallOrders(){
+		return sessionFactory.getCurrentSession().createQuery("from Orders").list();
 	}
 	
 }

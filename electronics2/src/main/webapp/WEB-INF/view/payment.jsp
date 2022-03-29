@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,8 +117,11 @@
                                     <option>Bank 9</option>
                                     <option>Bank 10</option>
                                 </select> </div>
-                            <div class="form-group">    
-                                <p> <a href="placeOrderByCart" class="btn btn-primary"><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</a> </p>
+                            <div class="form-group">  
+                            	<form action="placeOrderByCart">
+                            		<p> <button class="btn btn-primary"><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</button> </p>
+                            	</form>  
+                                
                             </div>
                             <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
                         </div> <!-- End -->

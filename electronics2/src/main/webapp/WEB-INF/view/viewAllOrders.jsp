@@ -4,16 +4,16 @@
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="False"%>
-<%@include file="../../resources/header/customerHeader.jsp" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="../../resources/header/adminHeader.jsp" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
-<html>
+<html>	
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-	
+<body>	
+
 	<div class="container mt-5">
         <div class="accordion accordion-flush" id="accordionFlushExample">
         
@@ -38,6 +38,8 @@
 												<th scope="col">Order Id</th>
 												<th scope="col">Order Date</th>
 												<th scope="col">Shipping Address</th>
+												<th scope="col">User Id</th>
+												<th scope="col">User Name</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -45,6 +47,8 @@
 												<th scope="row">${o.key.oId}</th>
 												<td>${o.key.oDate}</td>
 												<td>${o.key.shippingAddress}</td>
+												<td>${o.key.user.uId}</td>
+												<td>${o.key.user.uName}</td>
 											</tr>
 										</tbody>
 									</table>
@@ -87,6 +91,6 @@
 
 </body>
 </html>
-<%
+<% 
 	}
 %>

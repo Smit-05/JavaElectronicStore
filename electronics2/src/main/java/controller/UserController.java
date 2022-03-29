@@ -183,7 +183,6 @@ public class UserController {
 	@RequestMapping(value = "/customerHome", method = RequestMethod.GET)
 	public ModelAndView customerHome(ModelAndView mv,HttpServletRequest req,HttpSession s) {
 		
-		
 		CategoryDAOImpl catWrapper = new CategoryDAOImpl();
 		catWrapper.setCategories(catService.getAllCategory());
 		mv.addObject("catWrapper",catWrapper);

@@ -6,7 +6,6 @@
     pageEncoding="ISO-8859-1" isELIgnored="False"%>
 <%@include file="../../resources/header/customerHeader.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,11 +16,10 @@
 
 	<c:if test="${not empty cartList}">
 		<!-- <a href="invoicePage">Place Order</a> -->
-		<form:form action="invoicePage" modelAttribute="cartList">
+		<form action="invoicePage">
 			<input type="submit" value="Place Order">
-		</form:form>
+		</form>
 	</c:if>
-	
 	
 	<c:forEach var="cart" items="${cartList}" varStatus="thecount">
 		<br>	
