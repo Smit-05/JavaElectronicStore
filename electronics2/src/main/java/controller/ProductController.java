@@ -160,10 +160,10 @@ public class ProductController {
 
 		err = productService.addProduct(product);
 
-		if (err) {
+		if (!err) {
 			mv.addObject("message", "Something went wrong while inserting item... please try again...");
 		} else {
-			mv.addObject("success_message", "Product is Successfully inserted...");
+			mv.addObject("success_message", "Product is Successfully inserted / updated...");
 		}
 
 		ProductDAOImpl productsWrapper = new ProductDAOImpl();
