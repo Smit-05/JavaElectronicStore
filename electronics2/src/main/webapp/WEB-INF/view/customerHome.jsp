@@ -22,7 +22,7 @@ if (session.getAttribute("userName") != null) {
 <style>
 	body {
         background-color: #eee;
-        overflow:hidden;
+        overflow-x:hidden;
     }
 </style>
 <title>Insert title here</title>
