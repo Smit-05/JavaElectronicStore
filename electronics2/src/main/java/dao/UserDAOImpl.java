@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.hibernate.SessionFactory;
@@ -42,6 +43,34 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void updateUser(User user) {
 		sessionFactory.getCurrentSession().update(user);
+	}
+	
+	@Override
+	public User getUserByEmail(String email) {
+		
+		Query query = sessionFactory.getCurrentSession().createQuery("from User where emailId = :email");
+		query.setParameter("email",email);
+		try {
+			User u = (User) query.getSingleResult();
+			return u;
+		}catch(NoResultException nre){
+			User user = new User();
+			return user;
+		}
+		
+	}
+	
+	@Override
+	public User getUserByUserName(String uName) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from User where uName = :uName");
+		query.setParameter("uName",uName);
+		try {
+			User u = (User) query.getSingleResult();
+			return u;
+		}catch(NoResultException nre){
+			User user = new User();
+			return user;
+		}
 	}
 	
 }

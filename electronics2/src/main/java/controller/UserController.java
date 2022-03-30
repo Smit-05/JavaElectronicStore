@@ -3,15 +3,19 @@ package controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import contact.JavaEmail;
 import dao.CategoryDAOImpl;
 import dao.ProductDAOImpl;
 
 import javax.servlet.http.HttpSession;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletRequest;
 
 import model.Product;
@@ -22,7 +26,10 @@ import service.ProductServiceImpl;
 import service.UserService;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.Random;
+
 import org.jboss.logging.Logger;
 
 @Controller
@@ -32,6 +39,10 @@ public class UserController {
 	private ProductService productService;
 	@Autowired
 	private CategoryService catService;
+	@Autowired
+	private UserService userService;
+	
+	int token1 = 0;
 	
 	private static final Logger logger = Logger.getLogger(UserController.class);
 	
@@ -39,8 +50,6 @@ public class UserController {
 		System.out.println("UserController");
 	}
 	
-	@Autowired
-	private UserService userService;
 	
 	@RequestMapping("/")
 	public ModelAndView login(ModelAndView mv) {
@@ -67,7 +76,7 @@ public class UserController {
 			mv.setViewName("login");
 		}else {
 			for(User u:allUsers) {
-				if(!(u.getuName()).equals(user.getuName())) {
+				if(!(u.getuName()).equalsIgnoreCase(user.getuName()) ) {
 					
 					if(!(u.getEmailId()).equals(user.getEmailId())) {
 						
@@ -247,6 +256,95 @@ public class UserController {
 		}
 		
 		return mv;
+	}
+	
+	@RequestMapping(value = "/contactUs")
+	public ModelAndView contactUs(ModelAndView mv) {
+		mv.setViewName("contact");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/contact")
+	public ModelAndView contact(@RequestParam("name") String username, @RequestParam("email") String email,@RequestParam("message") String message, HttpServletRequest request) throws IOException, AddressException, MessagingException {
+	    
+		String namestr = "<h3 style='display: inline'>Username: " + username + "<h3>";
+		String emailstr = "<h3 style='display: inline'>Email: " + email + "<h3>";
+		String msgstr = "<h3 style='display: inline'>Message: " + message + "<h3>";
+		String subject = "Feedback For Electronics Ecommerce Website";
+		String body = namestr + emailstr + msgstr;
+        JavaEmail javaEmail = new JavaEmail();
+        javaEmail.setMailServerProperties();
+        String to[] = { "prathamtailor0809@gmail.com" };
+        javaEmail.draftEmailMessage(to, subject, body);
+        javaEmail.sendEmail(to, subject, body);
+        return new ModelAndView("redirect:/contactUs");
+
+	}
+	
+	@RequestMapping(value = "/forgotPassword")
+	public ModelAndView forgotPassword(ModelAndView mv) {
+		mv.setViewName("forgotPassword");
+		return mv;
+	}
+	
+	
+	
+	@RequestMapping(value = "/resetValidate")
+	public ModelAndView resetValidate(ModelAndView mv,@RequestParam("email") String email) throws AddressException, MessagingException {
+		
+		User user = userService.getUserByEmail(email);
+		
+		if( user.getuName() != null ) {
+			
+			Random rand = new Random();
+			token1 = rand.nextInt();
+			
+			String uName = user.getuName();
+			
+			String subject = "Reset Password For Electronics Ecommerce Website";
+			String body = "http://localhost:8080/electronics2/resetPassword/" + uName + "/" + token1;
+	        JavaEmail javaEmail = new JavaEmail();
+	        javaEmail.setMailServerProperties();
+	        String to[] = { email };
+	        javaEmail.draftEmailMessage(to, subject, body);
+	        javaEmail.sendEmail(to, subject, body);
+	        return new ModelAndView("redirect:/");
+			
+			
+		}else
+			return new ModelAndView("redirect:/forgotPassword");
+	}
+	
+	@RequestMapping(value = "/resetPassword/{uName}/{token}")
+	public ModelAndView reset(ModelAndView mv, @PathVariable String uName, @PathVariable String token) {
+		if(token1 == Integer.parseInt(token)) {
+//			mv.addObject("username",uName);
+			mv.setViewName("redirect:/{uName}/{token}/resetPassword");
+			return mv;
+		}else
+			return new ModelAndView("redirect:/");
+	}
+	
+	@RequestMapping(value = "/{uName}/{token}/resetPassword")
+	public ModelAndView demo(ModelAndView mv,@PathVariable String uName) {
+		mv.addObject("UserName", uName);
+		mv.setViewName("resetPassword");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/{uName}/{token}/newPassword")
+	public ModelAndView updatePassword(ModelAndView mv,HttpServletRequest req) {
+		
+		String uname = req.getParameter("uname");
+		String newpassword = req.getParameter("newPassword");
+		
+		User user = userService.getUserByUserName(uname);
+		System.out.println(user.getLname());
+		user.setPassword(newpassword);
+		userService.updateUser(user);
+		
+		return new ModelAndView("redirect:/");
+		
 	}
 	
 }

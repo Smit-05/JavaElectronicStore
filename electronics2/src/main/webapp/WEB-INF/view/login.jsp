@@ -93,6 +93,8 @@
             </div>
 
 			<center>New User <a href="register">Register</a></center>
+			<br>
+			<center>New User <a href="forgotPassword">Forgot Password</a></center>
             
 			<!-- <div class="row">
 			
