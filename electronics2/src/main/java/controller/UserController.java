@@ -244,22 +244,37 @@ public class UserController {
 		user.setPassword(password);
 
 		boolean flag=false;
+		boolean eflag=false;
 		boolean newName=false;
+		boolean enewName=false;
 		boolean notSame=false;
+		boolean enotSame=false;
 		for(User u: allUsers) {
 			if(user.getuName().equalsIgnoreCase(u.getuName()) && user.getuId()==u.getuId()){
 					flag=true;	
 			}else if(user.getuName().equalsIgnoreCase(u.getuName()) && user.getuId()!=u.getuId()) {
 				notSame=true;
 			}
+			if(user.getEmailId().equals(u.getEmailId()) && user.getuId()==u.getuId()){
+				eflag=true;	
+			}else if(user.getEmailId().equals(u.getEmailId()) && user.getuId()!=u.getuId()) {
+				enotSame=true;
+			}
+			
 		}
 		if(flag==false && notSame==false) {
 			newName=true;
 		}
+		if(eflag==false && enotSame==false) {
+			enewName=true;
+		}
 		if(notSame==true) {
 			mv.addObject("message","Username is already taken...");
 			mv.setViewName("updateUser");
-		}else if(flag==true || newName==true) {
+		}else if(enotSame==true) {
+			mv.addObject("message","Email is already exists...");
+			mv.setViewName("updateUser");
+		}else if((flag==true || newName==true) && (eflag==true || enewName==true)) {
 			userService.addUser(user);
 			mv.addObject("success_message","User Successfully registered Now login...");
 			HttpSession session = req.getSession();
