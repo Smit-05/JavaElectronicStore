@@ -22,6 +22,8 @@
 }
 </style>
 <title>Document</title>
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body>
 	<%
@@ -43,6 +45,8 @@
 						aria-current="page" href="displayCart">View Cart</a></li>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="contactUs">Contact Us</a></li>
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="aboutUs">About Us</a></li>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="logout">Logout</a></li>
 				</ul>

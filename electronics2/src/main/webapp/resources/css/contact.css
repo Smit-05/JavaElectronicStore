@@ -37,10 +37,10 @@
         
         .address span {
             color: #7B1FA2;
-            margin-left:-20px!important;
+            /* margin-left:-20px!important; */
         }
         
-        #email{
+        /* #email{
         	margin-left:-95px!important;
         }
         
@@ -50,7 +50,7 @@
         
         #phone{
         	margin-left:-55px!important;
-        }
+        } */
         
         .icons {
             width: 50px;
@@ -104,7 +104,7 @@
             padding: .375rem .25rem
         }
         
-@media screen and (max-width: 1400px) {
+/* @media screen and (max-width: 1400px) {
   body {
     background-color: lightgreen;
   }
@@ -116,4 +116,4 @@
   #address{
   	margin-left:-195px!important;
   }
-}
+} */

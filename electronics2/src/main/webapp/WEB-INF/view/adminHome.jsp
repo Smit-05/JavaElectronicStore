@@ -10,12 +10,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+	body {
+        background-color: #eee;
+    }
+</style>
 <title>Insert title here</title>
 <style type="text/css">
 a{text-decoration: none; }
 </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 	<c:if test = "${not empty success_message}">
 			<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
@@ -89,7 +94,9 @@ a{text-decoration: none; }
 		</div>
 	</div>
 
-	
+	<div class="mt-auto">
+	<%@include file="../../resources/header/footer.jsp"%>	
+	</div>	
 </body>
 </html>
 <% 

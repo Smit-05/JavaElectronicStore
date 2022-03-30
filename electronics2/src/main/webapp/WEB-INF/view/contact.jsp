@@ -24,7 +24,7 @@
 </head>
 <body>
 
-	<div class="container mt-5">
+	<div class="container mt-5 mb-5">
         <div class="wrapper">
             <div class="overlay">
                 <div class="row d-flex justify-content-center align-items-center">
@@ -77,7 +77,11 @@
             </div>
         </div>
     </div>
-
+    
+    <%-- <div class="mt-auto">
+		<%@include file="../../resources/header/footer.jsp"%>	
+	</div> --%>
+    
 </body>
 </html>
 <%

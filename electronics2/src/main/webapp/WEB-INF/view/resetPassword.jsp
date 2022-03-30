@@ -16,7 +16,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-${UserName}
 	<div class="container col-md-4 mt-4 p-5">
 		
 		<form  action="newPassword" method="post">

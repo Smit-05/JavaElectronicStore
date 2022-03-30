@@ -65,6 +65,12 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping("/aboutUs")
+	public ModelAndView aboutUs(ModelAndView mv) {
+		mv.setViewName("aboutUs");
+		return mv;
+	}
+	
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	public ModelAndView saveUser(@ModelAttribute User user,ModelAndView mv) {
 		List<User> allUsers = userService.getAllUsers();

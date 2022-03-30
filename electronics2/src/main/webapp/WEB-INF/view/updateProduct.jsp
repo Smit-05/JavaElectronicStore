@@ -7,12 +7,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	body {
+        background-color: #eee;
+    }
+</style>
 <meta charset="ISO-8859-1">
 <title>Update Item</title>
 <%@include file="../../resources/header/adminHeader.jsp"%>
 </head>
-<body>
-	<div class="container mt-2">
+<body class="d-flex flex-column min-vh-100">
+	<div class="container mt-5 mb-5">
 		<%
 		Product prod = (Product) request.getAttribute("product");
 		%>
@@ -99,7 +104,9 @@
 		</div>
 
 	</div>
-
+<div class="mt-auto">
+	<%@include file="../../resources/header/footer.jsp"%>	
+	</div>
 	<script type="text/javascript">
 		const i_photo = document.getElementById("i_photo");
 		i_photo.addEventListener("change", handleFiles, false);

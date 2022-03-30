@@ -6,15 +6,21 @@
     pageEncoding="ISO-8859-1" isELIgnored="False"%>
 <%@include file="../../resources/header/customerHeader.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+	body {
+        background-color: #eee;
+    }
+</style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	
-	<div class="container mt-5">
+	<div class="container mt-5 mb-5">
         <div class="accordion accordion-flush" id="accordionFlushExample">
         
         	<c:forEach var="o" items="${orders}" varStatus="thecount">
@@ -84,7 +90,9 @@
             
         </div>
     </div>
-
+	<div class="mt-auto">
+		<%@include file="../../resources/header/footer.jsp"%>	
+	</div>
 </body>
 </html>
 <%
