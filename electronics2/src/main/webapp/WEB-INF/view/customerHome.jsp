@@ -157,7 +157,7 @@ if (session.getAttribute("userName") != null) {
 
 		</div>
 	</div>
-	<div class="mt-auto">
+	<div class="mt-5">
 	<%@include file="../../resources/header/footer.jsp"%>	
 	</div>
 	<script>
