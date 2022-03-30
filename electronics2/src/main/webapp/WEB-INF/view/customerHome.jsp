@@ -22,11 +22,12 @@ if (session.getAttribute("userName") != null) {
 <style>
 	body {
         background-color: #eee;
+        overflow:hidden;
     }
 </style>
 <title>Insert title here</title>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" >
 
 	<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog"
 		aria-labelledby="edit-modalTitle" aria-hidden="true">
@@ -131,7 +132,7 @@ if (session.getAttribute("userName") != null) {
 								alt="Soemthing went wrong while loding image" height="250px">
 							<div class="card-body">
 								<h5 class="card-title text-truncate product_detail"
-									data-bs-toggle='modal' data-bs-target='#edit-modal'><%=prod.getpName()%></h5>
+									data-bs-toggle='modal' data-bs-target='#edit-modal' style="cursor:pointer;"><%=prod.getpName()%></h5>
 								<p class="card-text text-truncate"><%=prod.getpDesc()%></p>
 								<form action="addCart">
 									<input type="hidden" name="pId" class="proF_id"
@@ -156,7 +157,7 @@ if (session.getAttribute("userName") != null) {
 
 		</div>
 	</div>
-	<div class="mt-5">
+	<div class="mt-auto">
 	<%@include file="../../resources/header/footer.jsp"%>	
 	</div>
 	<script>
