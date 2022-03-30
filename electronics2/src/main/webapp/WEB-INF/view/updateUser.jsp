@@ -14,7 +14,7 @@
 <link href="<c:url value="/resources/css/registerForm.css"/>" rel="stylesheet">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	<div class="container col-md-8 mt-4 p-5">
 	
 		 <c:if test = "${not empty message}">
@@ -103,6 +103,9 @@
 		    </div>
 		</form>
 	</div>
+	<div class="mt-auto">
+	<%@include file="../../resources/header/footer.jsp"%>	
+	</div>	
 	 <script>
 
         (function () {

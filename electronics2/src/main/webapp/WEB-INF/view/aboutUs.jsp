@@ -200,7 +200,7 @@
 
 </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	<main class="container mt-3 col-xl-6">
 		<section class="mb-4">
 			<h2 class="h1-responsive font-weight-bold text-center my-4">About
@@ -261,5 +261,8 @@
 
 		</section>
 	</main>
+	<div class="mt-auto">
+	<%@include file="../../resources/header/footer.jsp"%>	
+	</div>
 </body>
 </html>

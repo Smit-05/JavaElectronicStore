@@ -21,7 +21,7 @@ if (session.getAttribute("userName") != null) {
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 	<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog"
 		aria-labelledby="edit-modalTitle" aria-hidden="true">
@@ -120,7 +120,7 @@ if (session.getAttribute("userName") != null) {
 					%>
 					<div class="col-md-4">
 						<div class="card mt-2 shadow-sm"
-							style="width: 80%; height: 460px;">
+							>
 							<img src="resources/images/products/<%=prod.getpPic()%>"
 								class="card-img-top"
 								alt="Soemthing went wrong while loding image" height="250px">
@@ -150,6 +150,9 @@ if (session.getAttribute("userName") != null) {
 			</div>
 
 		</div>
+	</div>
+	<div class="mt-auto">
+	<%@include file="../../resources/header/footer.jsp"%>	
 	</div>
 	<script>
 	let product_detail = document.querySelectorAll(".product_detail");

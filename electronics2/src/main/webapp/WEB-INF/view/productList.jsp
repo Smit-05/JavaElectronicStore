@@ -14,7 +14,7 @@
 	href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 	
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	<div class="container">
 		<div class="m-3 table-responsive">
 
@@ -63,6 +63,9 @@
 
 	</div>
 	</div>
+	<div class="mt-auto">
+	<%@include file="../../resources/header/footer.jsp"%>	
+	</div>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script type="text/javascript" charset="utf8"
 		src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>

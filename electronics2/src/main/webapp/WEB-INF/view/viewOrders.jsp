@@ -12,7 +12,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	
 	<div class="container mt-5">
         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -84,7 +84,9 @@
             
         </div>
     </div>
-
+<div class="mt-auto">
+	<%@include file="../../resources/header/footer.jsp"%>	
+	</div>
 </body>
 </html>
 <%

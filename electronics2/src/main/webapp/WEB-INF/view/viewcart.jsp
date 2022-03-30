@@ -20,7 +20,7 @@
 </style>
 <title>Insert title here</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	<% int orderTotal=0;%> 
 	
 	<section class="p-4" style="background-color: #fdccbc;">
@@ -116,7 +116,9 @@
     </div>
   </div>
 </section>
-
+<div class="mt-auto">
+	<%@include file="../../resources/header/footer.jsp"%>	
+	</div>
 </body>
 </html>
 <%

@@ -12,7 +12,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	<section style="background-color: #eee; height: 92vh">
   <div class="container py-5">
  
@@ -109,6 +109,9 @@
     </div>
   </div>
 </section>
+<div class="mt-auto">
+	<%@include file="../../resources/header/footer.jsp"%>	
+	</div>
 </body>
 </html>
 <% 

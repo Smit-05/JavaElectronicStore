@@ -18,7 +18,7 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 <meta charset="ISO-8859-1">
 <title>Insert Item</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 	<div class="container mt-2">
 
@@ -95,7 +95,9 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 		</div>
 
 	</div>
-
+	<div class="mt-auto">
+	<%@include file="../../resources/header/footer.jsp"%>	
+	</div>
 	<script type="text/javascript">
 		const i_photo = document.getElementById("i_photo");
 		i_photo.addEventListener("change", handleFiles, false);
