@@ -6,13 +6,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
 <title>Product List</title>
 
 <%@include file="../../resources/header/adminHeader.jsp"%>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-	
+
+<style>
+	body {
+        background-color: #eee!important;
+    }
+</style>
 </head>
 <body class="d-flex flex-column min-vh-100">
 	<div class="container">

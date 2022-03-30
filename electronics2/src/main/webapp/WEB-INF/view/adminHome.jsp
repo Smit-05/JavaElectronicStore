@@ -10,6 +10,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+	body {
+        background-color: #eee;
+    }
+</style>
 <title>Insert title here</title>
 <style type="text/css">
 a{text-decoration: none; }

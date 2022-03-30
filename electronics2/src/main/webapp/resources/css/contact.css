@@ -1,0 +1,119 @@
+@charset "ISO-8859-1";
+
+.navbar {
+			background-color: #990033 !important;
+		}
+        body {
+            background-color: #eee;
+        }
+        .wrapper {
+            height: 65vh!important;
+            /*background: #000;
+            background: url("https://i.imgur.com/g63vXfd.jpg");*/
+            background-size: cover;
+            width: 100%;
+            background-color: white;
+        }
+        
+        .overlay {
+            width: 100%;
+            height: 100vh;
+            /*background: rgba(0, 0, 0, 0.8)*/
+        }
+        
+        .contact-us {
+            margin-top: 50px;
+            margin-bottom: 50px
+        }
+        
+        .contact-us h3,
+        p {
+            color: black    
+        }
+        
+        .address {
+            margin-top: 14px !important;
+        }
+        
+        .address span {
+            color: #7B1FA2;
+            /* margin-left:-20px!important; */
+        }
+        
+        /* #email{
+        	margin-left:-95px!important;
+        }
+        
+        #address{
+        	margin-left:-265px!important;
+        }
+        
+        #phone{
+        	margin-left:-55px!important;
+        } */
+        
+        .icons {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: inline-block;
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+        
+        .icons i {
+            font-size: 20px
+        }
+        
+        .forms {
+            padding: 20px
+        }
+        
+        .inputs input {
+            margin-bottom: 13px;
+            border: none;
+            border-bottom: 2px solid #eee
+        }
+        
+        .inputs input:focus {
+            margin-bottom: 13px;
+            border: none;
+            border-bottom: 2px solid #7B1FA2;
+            box-shadow: none
+        }
+        
+        .inputs textarea {
+            margin-bottom: 13px;
+            border: none;
+            border-bottom: 2px solid #eee;
+            width: 100%;
+            resize: none
+        }
+        
+        .inputs textarea:focus {
+            margin-bottom: 13px;
+            border: none;
+            border-bottom: 2px solid #7B1FA2;
+            box-shadow: none;
+            resize: none
+        }
+        
+        .form-control {
+            padding: .375rem .25rem
+        }
+        
+/* @media screen and (max-width: 1400px) {
+  body {
+    background-color: lightgreen;
+  }
+  #address{
+  	margin-left:-235px!important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #address{
+  	margin-left:-195px!important;
+  }
+} */

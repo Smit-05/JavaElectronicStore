@@ -16,11 +16,16 @@ response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+	body {
+        background-color: #eee;
+    }
+</style>
 <title>Insert Item</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-	<div class="container mt-2">
+	<div class="container mt-5 mb-5">
 
 		<div class="card">
 			<h5 class="card-header">Insert New Item</h5>

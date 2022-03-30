@@ -16,6 +16,9 @@
   	.h-custom {
     	height: 100vh !important;
   	}
+  	body {
+        background-color: #eee;
+    }
 }
 </style>
 <title>Insert title here</title>
@@ -23,7 +26,7 @@
 <body class="d-flex flex-column min-vh-100">
 	<% int orderTotal=0;%> 
 	
-	<section class="p-4" style="background-color: #fdccbc;">
+	<section class="p-4">
   	<div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col">

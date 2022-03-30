@@ -44,6 +44,8 @@
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="displayCart">View Cart</a></li>
 					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="contactUs">Contact Us</a></li>
+					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="aboutUs">About Us</a></li>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="logout">Logout</a></li>

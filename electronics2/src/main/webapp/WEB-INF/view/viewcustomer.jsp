@@ -12,6 +12,11 @@ if (session.getAttribute("userName") != null) {
 <head>
 <meta charset="ISO-8859-1">
 <title>Customer List</title>
+<style>
+	body {
+        background-color: #eee;
+    }
+</style>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 </head>

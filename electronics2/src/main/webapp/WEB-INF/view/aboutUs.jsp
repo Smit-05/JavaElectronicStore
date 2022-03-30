@@ -5,6 +5,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+	body {
+        background-color: #eee;
+    }
+</style>
 <title>About Us</title>
 <svg aria-hidden="true"
 	style="position: absolute; width: 0; height: 0; overflow: hidden;"

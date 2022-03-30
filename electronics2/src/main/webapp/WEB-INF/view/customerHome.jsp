@@ -19,6 +19,11 @@ if (session.getAttribute("userName") != null) {
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+	body {
+        background-color: #eee;
+    }
+</style>
 <title>Insert title here</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -151,7 +156,7 @@ if (session.getAttribute("userName") != null) {
 
 		</div>
 	</div>
-	<div class="mt-auto">
+	<div class="mt-5">
 	<%@include file="../../resources/header/footer.jsp"%>	
 	</div>
 	<script>

@@ -13,60 +13,9 @@
         crossorigin="anonymous"></script>
 <link href="<c:url value="/resources/css/registerForm.css"/>" rel="stylesheet">
 <title>Customer Register Form</title>
-</head>
+</head>		
 <body>
-	
-	<%-- <center><h2 style="padding:20px">${message}</h2></center> --%>
-	
-	<%-- <div align="center">
-        <h1>Register User</h1>
-        <form:form action="saveUser" method="post" modelAttribute="user">
-        <table>
-            <form:hidden path="uId"/>
-            <form:hidden path="role" value="Customer" />
-            <tr>
-                <td>User Name:</td>
-                <td><form:input path="uName" /></td>
-            </tr>
-            <tr>
-            	<td>Password:</td>
-            	<td><form:password path="password" /></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><form:input type="email" path="emailId" /></td>
-            </tr>
-            <tr>
-                <td>First Name:</td>
-                <td><form:input path="fName" /></td>
-            </tr>
-            <tr>
-                <td>Last Name:</td>
-                <td><form:input path="lname" /></td>
-            </tr>
-            <tr>
-                <td>Middle Name:</td>
-                <td><form:input path="mName" /></td>
-            </tr>
-            <tr>
-                <td>Phone no:</td>
-                <td><form:input path="uPhoneNo" /></td>
-            </tr>
-            <tr>
-                <td>Address:</td>
-                <td><form:input path="uAddress" /></td>
-            </tr>
-            <tr>
-                <td>D.O.B:</td>
-                <td><form:input type="date" path="dob" /></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center"><input type="submit" value="Save"></td>
-            </tr>
-        </table>
-        </form:form>
-    </div> --%>
-    
+
     <div class="container col-md-8 mt-4 p-5">
         <center>
             <h2 style="margin-bottom:45px!important">Register Form</h2>

@@ -17,29 +17,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<%-- <center><h3 style="padding:20px">${message}</h3></center> --%>
-	
-	
-        
-    <%-- <c:if test = "${not empty success_msg}">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-	        <div class="alert alert-success alert-dismissible fade show" role="alert">
-				  ${success_msg}
-		    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-		</div>
-   </c:if> --%>
-	
-	<!-- <div align="center">
-	    <form action="validateUser" method="POST">
-	    	User Name: <input type="text" name="uName" id="uName" required><br><br>
-	    	Password: <input type="password" name="password" id="password" required><br><br>
-	    	<center><input type="submit" value="Login"></center>
-	    	<br>
-	    	New User Register<a href="register">Sign Up</a>
-	    </form>
-	</div> -->
-	
 	
 	<div class="container col-md-4 mt-4 p-5"">
 		
@@ -93,6 +70,8 @@
             </div>
 
 			<center>New User <a href="register">Register</a></center>
+			<br>
+			<center>New User <a href="forgotPassword">Forgot Password</a></center>
             
 			<!-- <div class="row">
 			
