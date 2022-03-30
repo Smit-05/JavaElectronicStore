@@ -52,7 +52,7 @@
         <!-- For demo purpose -->
         <div class="row mb-4">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="display-6">Bootstrap Payment Forms</h1>
+                <h1 class="display-6">Payment</h1>
             </div>
         </div> <!-- End -->
         <div class="row">

@@ -242,7 +242,7 @@ public class UserController {
 		user.setuName(uName);
 		user.setuPhoneNo(uPhoneNo);
 		user.setPassword(password);
-		
+
 		boolean flag=false;
 		boolean newName=false;
 		boolean notSame=false;
@@ -262,6 +262,8 @@ public class UserController {
 		}else if(flag==true || newName==true) {
 			userService.addUser(user);
 			mv.addObject("success_message","User Successfully registered Now login...");
+			HttpSession session = req.getSession();
+			session.setAttribute("userName",uName);
 			if(user.getRole().equals("Customer")) {
 				mv.addObject("customer",user);
 				mv.setViewName("CustomerProfile");

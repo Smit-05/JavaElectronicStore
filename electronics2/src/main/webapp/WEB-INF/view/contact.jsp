@@ -92,9 +92,9 @@ if (session.getAttribute("userName") != null) {
 			</div>
 		</div>
 	</div>
-	<div class="mt-auto">
-		<%@include file="../../resources/header/footer.jsp"%>
-	</div>
+<!-- 	<div class="mt-auto"> -->
+<%-- 		<%@include file="../../resources/header/footer.jsp"%> --%>
+<!-- 	</div> -->
 
 </body>
 </html>
