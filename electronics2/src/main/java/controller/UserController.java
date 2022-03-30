@@ -221,6 +221,7 @@ public class UserController {
 		List<User> allUsers = userService.getAllUsers();
 		
 		User user = new User();
+		User us = new User();
 		user.setDob(dob);
 		user.setEmailId(emailId);
 		user.setfName(fName);
@@ -232,24 +233,33 @@ public class UserController {
 		user.setuName(uName);
 		user.setuPhoneNo(uPhoneNo);
 		user.setPassword(password);
-	
 		
-		if(allUsers.isEmpty()) {
+		boolean flag=false;
+		boolean newName=false;
+		boolean notSame=false;
+		for(User u: allUsers) {
+			if(user.getuName().equals(u.getuName()) && user.getuId()==u.getuId()){
+					flag=true;	
+			}else if(user.getuName().equals(u.getuName()) && user.getuId()!=u.getuId()) {
+				notSame=true;
+			}
+		}
+		if(flag==false && notSame==false) {
+			newName=true;
+		}
+		if(notSame==true) {
+			mv.addObject("message","Username is already taken...");
+			mv.setViewName("updateUser");
+		}else if(flag==true || newName==true) {
 			userService.addUser(user);
-			mv.setViewName("login");
-		}else {
-			
-				userService.addUser(user);
-				mv.addObject("success_message","User Successfully registered Now login...");
-				if(user.getRole().equals("Customer")) {
-					mv.addObject("customer",user);
-					mv.setViewName("CustomerProfile");
-				}else {
-					mv.addObject("admin",user);
-					mv.setViewName("adminProfile");
-				}
-			
-				
+			mv.addObject("success_message","User Successfully registered Now login...");
+			if(user.getRole().equals("Customer")) {
+				mv.addObject("customer",user);
+				mv.setViewName("CustomerProfile");
+			}else {
+				mv.addObject("admin",user);
+				mv.setViewName("adminProfile");
+			}
 		}
 		
 		return mv;

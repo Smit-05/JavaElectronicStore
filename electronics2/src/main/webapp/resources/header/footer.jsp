@@ -1,4 +1,5 @@
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <footer class="footer mt-auto text-center text-white mt-auto" style="background-color:#990033 !important; ">
   <!-- Grid container -->
   <div class="container p-4 pb-0">
