@@ -10,10 +10,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+	body{
+		background-color: #eee;
+	}
+</style>
 <title>Insert title here</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
-	<section style="background-color: #eee; height: 92vh">
+	<section class="mb-5">
   <div class="container py-5">
  
     <div class="row">
