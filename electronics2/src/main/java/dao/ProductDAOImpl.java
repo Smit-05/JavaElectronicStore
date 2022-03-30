@@ -22,8 +22,13 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public boolean addProduct(Product product) {
-		sessionFactory.getCurrentSession().saveOrUpdate(product);
-		return false;
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate(product);
+			return true;
+		} catch (Exception e) {
+
+			return false;
+		}
 	}
 
 	@Override
@@ -55,13 +60,17 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public boolean updateProduct(Product product) {
-		sessionFactory.getCurrentSession().update(product);
-		return true;
+		try {
+			sessionFactory.getCurrentSession().update(product);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override
 	public List<Product> getProductsByCategory(int cid) {
-		String query = "FROM Product P WHERE P.category="+cid;
+		String query = "FROM Product P WHERE P.category=" + cid;
 		return sessionFactory.getCurrentSession().createQuery(query).list();
 
 	}
