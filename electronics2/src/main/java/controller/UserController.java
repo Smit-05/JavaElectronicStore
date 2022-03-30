@@ -247,9 +247,9 @@ public class UserController {
 		boolean newName=false;
 		boolean notSame=false;
 		for(User u: allUsers) {
-			if(user.getuName().equals(u.getuName()) && user.getuId()==u.getuId()){
+			if(user.getuName().equalsIgnoreCase(u.getuName()) && user.getuId()==u.getuId()){
 					flag=true;	
-			}else if(user.getuName().equals(u.getuName()) && user.getuId()!=u.getuId()) {
+			}else if(user.getuName().equalsIgnoreCase(u.getuName()) && user.getuId()!=u.getuId()) {
 				notSame=true;
 			}
 		}

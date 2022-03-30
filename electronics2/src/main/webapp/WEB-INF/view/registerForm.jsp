@@ -106,11 +106,13 @@
                 <form:textarea class="form-control" id="floatingTextarea2"
                     style="height: 100px" path="uAddress" required="required"></form:textarea>
             </div>
+            <div class="col-md-4"></div>
     
-    		
-		    <div class="col-12">
+    		<div class="col-md-4"></div>
+		    <div class="col-md-4" align="center">
 		        <button class="btn btn-primary" type="submit">Submit form</button>
 		    </div>
+		     <div class="col-md-4"></div>
     </form:form>
     </div>
 

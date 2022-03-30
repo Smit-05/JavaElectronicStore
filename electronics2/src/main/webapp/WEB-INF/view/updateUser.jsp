@@ -103,9 +103,6 @@
 		    </div>
 		</form>
 	</div>
-	<div class="mt-auto">
-	<%@include file="../../resources/header/footer.jsp"%>	
-	</div>	
 	 <script>
 
         (function () {
