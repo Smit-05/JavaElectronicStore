@@ -1,5 +1,11 @@
-## JavaElectronicStore
-JavaElectronicStore is a web application which allows user to buy electronics product online. This project uses **Spring MVC Framework**, **Hibernate** and **MySQL** as backend.
+## _**JavaElectronicStore**_
+_JavaElectronicStore is a web application which allows user to buy electronics product online. This project uses **Spring MVC Framework**, **Hibernate** and **MySQL** as backend. We have used **JSP** pages to show the html contents._
+<div align="center">
+  <a href="#"><img src="https://sloc.xyz/github/Smit-05/JavaElectronicStore" alt="Total Lines"/></a>
+  <a href="#"><img src="https://img.shields.io/github/stars/Smit-05/JavaElectronicStore" alt="Stars"/></a>
+  <a href="#"><img src="https://img.shields.io/github/forks/Smit-05/JavaElectronicStore" alt="Forks"/></a>
+</div>
+
 
 ## Technologies
 <p>
@@ -29,8 +35,7 @@ JavaElectronicStore is a web application which allows user to buy electronics pr
 <br>[Pratham Tailor](https://github.com/prathamTailor)
 <br>[Jaydipsinh Zala](https://github.com/ZalaJaydipsinh)
 
-<br>
 <hr>
 <p>
-  <a href="#"><img src="https://contrib.rocks/image?repo=Smit-05/JavaElectronicStore" /></a>  
+  <a href="https://github.com/Smit-05"><img src="https://contrib.rocks/image?repo=Smit-05/JavaElectronicStore" /></a>  
 </p>
